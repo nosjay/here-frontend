@@ -1,11 +1,8 @@
 import Vue from 'vue';
-import { Button, Table } from 'iview';
-import 'iview/dist/styles/iview.css';
 import { VUE_PRODUCTION_TIPS, USE_I_MISS_YOU } from './configs';
 import directives from './directives';
 import router from './services/router';
 import inject from './plugins/inject';
-import iViewFix from './plugins/iViewFix';
 import store from './services/store';
 import App from './App.vue';
 import IMissYou from './utils/IMissYou';
@@ -22,11 +19,6 @@ Object.keys(directives).forEach((name) => {
 // disable production tips
 Vue.config.productionTip = VUE_PRODUCTION_TIPS;
 Vue.use(inject);
-Vue.use(iViewFix);
-
-// view components
-Vue.component('Button', Button);
-Vue.component('Table', Table);
 
 // I miss you
 if (USE_I_MISS_YOU) {
