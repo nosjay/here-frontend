@@ -3,6 +3,7 @@ import { AXIOS_REQUEST_PRINTER, AXIOS_RESPONSE_PRINTER } from '../configs';
 
 export function onRequestSuccess(request) {
   if (AXIOS_REQUEST_PRINTER) {
+    // eslint-disable-next-line no-console
     console.info(`axios.onRequestSuccess: url=${request.url}`, request);
   }
 
@@ -18,6 +19,7 @@ export function onResponseSuccess(response) {
   const { status } = responseData;
 
   if (AXIOS_RESPONSE_PRINTER) {
+    // eslint-disable-next-line no-console
     console.info(`axios.onResponseSuccess: status=${status}`, response);
   }
 

@@ -35,7 +35,7 @@ class CleanService {
   }
 }
 
-// start clean useless files
+
 CleanService.cleanup(files).catch((err) => {
   error(err);
   process.exit(1);

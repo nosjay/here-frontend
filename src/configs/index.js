@@ -6,6 +6,7 @@ export const ENABLE_AJAX_LOCALLY = false;
 
 // default config for vue-router
 export const DEFAULT_ROUTER_CONFIG = {
+  mode: 'history',
 };
 
 // default config for axios
@@ -26,3 +27,5 @@ export const VUE_PRODUCTION_TIPS = true;
 
 export const AXIOS_REQUEST_PRINTER = true;
 export const AXIOS_RESPONSE_PRINTER = true;
+
+export const USE_I_MISS_YOU = true;
