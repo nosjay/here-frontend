@@ -17,7 +17,6 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
-    "@vue/cli-plugin-pwa": "^3.0.0-rc.10",
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/cli-shared-utils": "^3.0.0",
     "@vue/eslint-config-airbnb": "^3.0.0-rc.10",

@@ -5,8 +5,9 @@ import router from './services/router';
 import inject from './plugins/inject';
 import store from './services/store';
 import App from './App.vue';
+import Components from './components';
 import IMissYou from './utils/IMissYou';
-import './static/styles/global.scss';
+import './static/styles/index.scss';
 
 // event bus for global/common components
 GLOBAL.bus = new Vue();
@@ -19,6 +20,7 @@ Object.keys(directives).forEach((name) => {
 // disable production tips
 Vue.config.productionTip = VUE_PRODUCTION_TIPS;
 Vue.use(inject);
+Vue.use(Components);
 
 // I miss you
 if (USE_I_MISS_YOU) {

@@ -1,0 +1,24 @@
+@import "../definitions";
+
+
+.#{$css-prefix}-loading-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $loading-bar-z-index;
+
+  &__inner {
+    width: 0;
+    transition: width $transition-time linear;
+
+    &--primary {
+      background: $primary-color;
+    }
+
+    &--failed {
+      background: $error-color;
+    }
+  }
+}
