@@ -9,7 +9,6 @@
 <script>
 const loadingBarBlockClass = 'h-loading-bar';
 
-
 export default {
   name: 'LoadingBar',
   props: {
@@ -74,5 +73,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../static/styles/components/loading-bar";
+@import "../../styles/components/loading-bar";
 </style>

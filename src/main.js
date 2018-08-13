@@ -7,7 +7,7 @@ import store from './services/store';
 import App from './App.vue';
 import Components from './components';
 import IMissYou from './utils/IMissYou';
-import './static/styles/index.scss';
+import './styles/index.scss';
 
 // event bus for global/common components
 GLOBAL.bus = new Vue();
