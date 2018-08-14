@@ -1,9 +1,15 @@
+import Aside from './aside';
 import Container from './container';
+import Header from './header';
+import Layout from './layout';
 import LoadingBar from './loading-bar';
 
 
 const components = {
+  Aside,
   Container,
+  Header,
+  Layout,
   LoadingBar,
 };
 

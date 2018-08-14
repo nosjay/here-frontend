@@ -1,4 +1,9 @@
-import Content from './content';
+import Aside from './aside';
+import Header from './header';
+import Layout from './layout';
 
 
-export default Content;
+Layout.Aside = Aside;
+Layout.Header = Header;
+
+export default Layout;

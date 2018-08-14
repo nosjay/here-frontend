@@ -1,0 +1,46 @@
+@import "../definitions";
+
+
+.h-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  background: $layout-body-background;
+
+  &--has-aside {
+    flex-direction: row;
+
+    > .h-layout, > .h-layout__content {
+      overflow-x: hidden;
+    }
+  }
+
+  &__header, &__footer {
+    flex: 0 0 auto;
+  }
+
+  &__header {
+    background: $layout-header-background;
+    padding: $layout-header-padding;
+    height: $layout-header-height;
+    line-height: $layout-header-height;
+  }
+
+  &__aside {
+    transition: all $transition-time $ease-in-out;
+    position: relative;
+    background: $layout-aside-background;
+
+    min-width: 0;
+
+    &__children {
+      height: 100%;
+      padding-top: 0.1px;
+      margin-top: -0.1px;
+
+      & > * {
+        overflow: hidden;
+      }
+    }
+  }
+}
