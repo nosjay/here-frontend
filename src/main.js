@@ -1,12 +1,11 @@
 import Vue from 'vue';
-import { VUE_PRODUCTION_TIPS, USE_I_MISS_YOU } from './configs';
+import { VUE_PRODUCTION_TIPS } from './configs';
 import directives from './directives';
 import router from './services/router';
 import inject from './plugins/inject';
 import store from './services/store';
 import App from './App.vue';
 import Components from './components';
-import IMissYou from './utils/IMissYou';
 import './styles/index.scss';
 
 // event bus for global/common components
@@ -21,12 +20,6 @@ Object.keys(directives).forEach((name) => {
 Vue.config.productionTip = VUE_PRODUCTION_TIPS;
 Vue.use(inject);
 Vue.use(Components);
-
-// I miss you
-if (USE_I_MISS_YOU) {
-  (new IMissYou('I Miss You (´∀｀)♡', true, 'iMissYou.ico'))
-    .theGreatestHappinessWasToMeetYou();
-}
 
 // create root instance for Vue
 new Vue({

@@ -12,7 +12,7 @@ export default {
   props: {
     height: {
       type: String,
-      default: '64px',
+      default: '60px',
     },
   },
   computed: {
@@ -22,7 +22,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-
-</style>

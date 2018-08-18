@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: column;
   flex: auto;
-  background: $layout-body-background;
+  background: $layout-main-background;
 
   &--has-aside {
     flex-direction: row;
 
-    > .h-layout, > .h-layout__content {
+    > .h-layout, > .h-layout__main {
       overflow-x: hidden;
     }
   }
@@ -27,7 +27,7 @@
   }
 
   &__aside {
-    transition: all $transition-time $ease-in-out;
+    transition: width $transition-time $ease-in-out;
     position: relative;
     background: $layout-aside-background;
 
@@ -41,6 +41,19 @@
       & > * {
         overflow: hidden;
       }
+    }
+  }
+
+  &__main {
+    padding: $layout-main-padding;
+  }
+
+  &__footer {
+    background: $layout-footer-background;
+    padding: $layout-footer-padding;
+
+    &--center {
+      text-align: center;
     }
   }
 }

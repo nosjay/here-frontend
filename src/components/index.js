@@ -1,16 +1,20 @@
 import Aside from './aside';
 import Container from './container';
+import Footer from './footer';
 import Header from './header';
 import Layout from './layout';
 import LoadingBar from './loading-bar';
+import Main from './main';
 
 
 const components = {
   Aside,
   Container,
+  Footer,
   Header,
   Layout,
   LoadingBar,
+  Main,
 };
 
 export default {

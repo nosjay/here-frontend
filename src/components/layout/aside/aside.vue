@@ -1,5 +1,5 @@
 <template>
-  <aside :class="blockClasses">
+  <aside :class="blockClasses" :style="blockStyles">
     <section :class="innerClasses">
       <slot></slot>
     </section>
@@ -12,9 +12,31 @@ const asideBlockClass = 'h-layout__aside';
 
 export default {
   name: 'Aside',
+  props: {
+    'full-page': {
+      type: Boolean,
+      default: false,
+    },
+    width: {
+      type: String,
+      default: 'auto',
+    },
+  },
   computed: {
     blockClasses() {
       return [asideBlockClass];
+    },
+    blockStyles() {
+      let minHeight = 'auto';
+      if (this.fullPage) {
+        minHeight = '100vh';
+      }
+
+      return {
+        width: this.width,
+        minWidth: this.width,
+        minHeight,
+      };
     },
     innerClasses() {
       return [`${asideBlockClass}__inner`];
@@ -22,7 +44,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>

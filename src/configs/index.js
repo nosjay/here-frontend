@@ -27,5 +27,3 @@ export const VUE_PRODUCTION_TIPS = true;
 
 export const AXIOS_REQUEST_PRINTER = true;
 export const AXIOS_RESPONSE_PRINTER = true;
-
-export const USE_I_MISS_YOU = true;

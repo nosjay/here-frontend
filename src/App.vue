@@ -1,7 +1,7 @@
 <template>
   <div id="h-app">
     <Layout>
-      <Aside style="min-width: 25%;min-height: 100vh;background: #f1f1f1f1;">
+      <Aside width="25%" full-page>
         aside
       </Aside>
 
@@ -12,7 +12,7 @@
         <Main>
           <router-view/>
         </Main>
-        <Footer>
+        <Footer center>
           footer
         </Footer>
       </Layout>

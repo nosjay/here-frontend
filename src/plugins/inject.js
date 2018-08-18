@@ -1,7 +1,7 @@
 import provider from '../services/axios';
 
 
-GLOBAL.provider = provider;
+GLOBAL.$provider = provider;
 
 export default {
   // eslint-disable-next-line
