@@ -1,7 +1,7 @@
 <template>
   <div id="h-app">
     <Layout>
-      <Aside width="25%" full-page>
+      <Aside width="25%" full-page shadow>
         aside
       </Aside>
 

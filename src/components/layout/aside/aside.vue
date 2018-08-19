@@ -21,10 +21,19 @@ export default {
       type: String,
       default: 'auto',
     },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     blockClasses() {
-      return [asideBlockClass];
+      return [
+        asideBlockClass,
+        {
+          [`${asideBlockClass}--shadow`]: this.shadow,
+        },
+      ];
     },
     blockStyles() {
       let minHeight = 'auto';
