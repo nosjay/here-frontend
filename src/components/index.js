@@ -1,5 +1,4 @@
 import Aside from './aside';
-import Container from './container';
 import Footer from './footer';
 import Header from './header';
 import Layout from './layout';
@@ -9,7 +8,6 @@ import Main from './main';
 
 const components = {
   Aside,
-  Container,
   Footer,
   Header,
   Layout,

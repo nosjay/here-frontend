@@ -13,7 +13,7 @@ const asideBlockClass = 'h-layout__aside';
 export default {
   name: 'Aside',
   props: {
-    'full-page': {
+    fullPage: {
       type: Boolean,
       default: false,
     },
@@ -32,19 +32,14 @@ export default {
         asideBlockClass,
         {
           [`${asideBlockClass}--shadow`]: this.shadow,
+          [`${asideBlockClass}--full-page`]: this.fullPage,
         },
       ];
     },
     blockStyles() {
-      let minHeight = 'auto';
-      if (this.fullPage) {
-        minHeight = '100vh';
-      }
-
       return {
         width: this.width,
         minWidth: this.width,
-        minHeight,
       };
     },
     innerClasses() {

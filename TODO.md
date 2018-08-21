@@ -5,7 +5,7 @@ Here-Frontend TODOs
 3. Mock Service
 4. Message Component
 5. Route Rules
-6. Mock Service
+6. Icon
 
 
 ### Completed

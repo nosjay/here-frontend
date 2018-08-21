@@ -9,6 +9,12 @@ const layoutBlockClass = 'h-layout';
 
 export default {
   name: 'Layout',
+  props: {
+    fullPage: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       hasAside: false,
@@ -20,6 +26,7 @@ export default {
         layoutBlockClass,
         {
           [`${layoutBlockClass}--has-aside`]: this.hasAside,
+          [`${layoutBlockClass}--full-page`]: this.fullPage,
         },
       ];
     },

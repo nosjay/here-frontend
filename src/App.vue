@@ -1,22 +1,23 @@
 <template>
   <div id="h-app">
-    <Layout>
-      <Aside width="25%" full-page shadow>
-        aside
-      </Aside>
+    <router-view/>
+    <!--<Layout>-->
+      <!--<Aside width="25%" full-page shadow>-->
+        <!--aside-->
+      <!--</Aside>-->
 
-      <Layout>
-        <Header>
-          header
-        </Header>
-        <Main>
-          <router-view/>
-        </Main>
-        <Footer center>
-          footer
-        </Footer>
-      </Layout>
-    </Layout>
+      <!--<Layout>-->
+        <!--<Header>-->
+          <!--header-->
+        <!--</Header>-->
+        <!--<Main>-->
+          <!--<router-view/>-->
+        <!--</Main>-->
+        <!--<Footer center>-->
+          <!--footer-->
+        <!--</Footer>-->
+      <!--</Layout>-->
+    <!--</Layout>-->
   </div>
 </template>
 
