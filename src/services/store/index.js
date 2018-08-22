@@ -6,11 +6,6 @@ import modules from './modules';
 
 Vue.use(Vuex);
 
-console.log({
-  ...DEFAULT_VUEX_CONFIG,
-  ...modules,
-});
-
 // noinspection JSCheckFunctionSignatures
 export default new Vuex.Store({
   ...DEFAULT_VUEX_CONFIG,

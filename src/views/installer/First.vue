@@ -1,6 +1,6 @@
 <template>
   <div>
-    user first
+    <router-link to="/">Go to Home</router-link>
   </div>
 </template>
 

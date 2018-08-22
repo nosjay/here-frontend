@@ -1,15 +1,15 @@
 <template>
-  <div id="h-app">
-    <router-view/>
+  <div>
+    page not found
   </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-  },
+  name: 'NotFoundError',
 };
 </script>
 
-<style lang="scss">
+<style scoped>
+
 </style>

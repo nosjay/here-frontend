@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    home page
+    <router-link to="/installer/first">Go to Installer</router-link>
   </div>
 </template>
 

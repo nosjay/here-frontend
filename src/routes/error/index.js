@@ -2,5 +2,5 @@
 export default [{
   name: 'error',
   path: '*',
-  component: () => import('../views/Error.vue'),
+  component: () => import('../../views/error/Layout.vue'),
 }];

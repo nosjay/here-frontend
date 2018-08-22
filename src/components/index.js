@@ -22,6 +22,7 @@ export default {
       Vue.component(name, components[name]);
     });
 
+    GLOBAL.$Loading = LoadingBar;
     Vue.prototype.$Loading = LoadingBar; // eslint-disable-line no-param-reassign
   },
 };
