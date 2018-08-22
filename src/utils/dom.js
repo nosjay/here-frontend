@@ -1,5 +1,6 @@
 import Vue from 'vue';
 
+
 const isServer = Vue.prototype.$isServer;
 
 /* istanbul ignore next */
