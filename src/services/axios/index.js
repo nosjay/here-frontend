@@ -6,10 +6,23 @@ import {
 } from '../../interceptors/axios';
 
 
-const provider = axios.create(DEFAULT_AXIOS_CONFIG);
+const instance = axios.create(DEFAULT_AXIOS_CONFIG);
 
-provider.interceptors.request.use(onRequestSuccess, onRequestFail);
-provider.interceptors.response.use(onResponseSuccess, onResponseFail);
+instance.interceptors.request.use(onRequestSuccess, onRequestFail);
+instance.interceptors.response.use(onResponseSuccess, onResponseFail);
 
+
+class ActionProvider {
+  constructor(axiosInstance) {
+    this.axios = axiosInstance;
+  }
+
+  // eslint-disable-next-line
+  wanna(action, params, data) {
+    this.axios.get(action);
+  }
+}
+
+const provider = new ActionProvider(instance);
 
 export default provider;

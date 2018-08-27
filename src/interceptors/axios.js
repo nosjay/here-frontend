@@ -1,11 +1,19 @@
 import { AXIOS_REQUEST_PRINTER, AXIOS_RESPONSE_PRINTER } from '../configs';
+import logging from '../utils/logging';
+import requestSignature from '../utils/request_token';
 
 
 export function onRequestSuccess(request) {
   if (AXIOS_REQUEST_PRINTER) {
-    // eslint-disable-next-line no-console
-    console.info(`axios.onRequestSuccess: url=${request.url}`, request);
+    logging.group('RequestBefore')
+      .info(request)
+      .end();
   }
+
+  // sign backend request
+  request.headers['X-Backend-Token'] = `h-${requestSignature()}`;
+  // backend server select
+  request.headers['X-Server-Select'] = 'backend';
 
   return request;
 }
@@ -27,7 +35,7 @@ export function onResponseSuccess(response) {
     case 0:
       return responseData.data;
     default:
-      GLOBAL.bus.$emit('global.$dialog.error', responseData.message);
+      GLOBAL.$Bus.$emit('global.$dialog.error', responseData.message);
       return Promise.reject(responseData);
   }
 }

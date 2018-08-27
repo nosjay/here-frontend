@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { IS_PRODUCTION_ENV } from '../configs';
 
 
 // @TODO color support
@@ -29,6 +30,28 @@ class Logger {
   }
 }
 
+class LoggerDisabled {
+  group() {
+    return this;
+  }
+
+  end() {
+    return this;
+  }
+
+  error() {
+    return this;
+  }
+
+  warning() {
+    return this;
+  }
+
+  info() {
+    return this;
+  }
+}
+
 let loggerInstance = null;
 
 function getLoggerInstance() {
@@ -48,6 +71,6 @@ export default {
     getLoggerInstance().info(message);
   },
   group(name) {
-    return new Logger().group(name);
+    return IS_PRODUCTION_ENV ? new LoggerDisabled() : new Logger().group(name);
   },
 };

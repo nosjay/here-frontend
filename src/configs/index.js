@@ -1,5 +1,6 @@
 // platform environment
 export const NODE_ENV = process.env.NODE_ENV || 'production';
+export const IS_PRODUCTION_ENV = NODE_ENV === 'production';
 
 // enable ajax to MOCK data
 export const ENABLE_AJAX_LOCALLY = false;

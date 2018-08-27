@@ -7,9 +7,8 @@ import store from './services/store';
 import App from './App.vue';
 import Components from './components';
 import './styles/index.scss';
+import './services/event';
 
-// event bus for global/common components
-GLOBAL.bus = new Vue();
 
 // directives register
 Object.keys(directives).forEach((name) => {

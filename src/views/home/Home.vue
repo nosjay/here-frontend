@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" style="height: 1000px">
     <router-link to="/installer/first">Go to Installer</router-link>
   </div>
 </template>
