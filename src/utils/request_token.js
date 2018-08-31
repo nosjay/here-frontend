@@ -1,2 +1,2 @@
 // example request signed
-export default () => 'aaaaaaaaaaaaaaaaaaaaa';
+export default () => 'xx-xx-xxxxxxxx-xxxx';

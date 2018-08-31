@@ -1,0 +1,12 @@
+#
+# here-frontend serve
+#
+version: "3"
+
+services:
+  vue:
+    build: "docs/docker/yarn/serve/rpi"
+    volumes:
+      - .:/var/yarn
+    ports:
+      - "8080:8080"
