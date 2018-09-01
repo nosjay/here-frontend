@@ -1,11 +1,11 @@
 #
-# here-frontend serve
+# here-frontend serve (DEV-ONLY)
 #
 version: "3"
 
 services:
   vue:
-    build: "docs/docker/yarn/serve/rpi"
+    build: "docs/docker/yarn/serve"
     volumes:
       - .:/var/yarn
     ports:
