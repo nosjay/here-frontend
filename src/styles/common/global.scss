@@ -1,5 +1,14 @@
 body {
   color: #333;
-  background: #f1f1f1;
+  animation: main-bg .1s linear forwards;
   box-sizing: border-box;
+}
+
+@keyframes main-bg {
+  from {
+    background: #fff;
+  }
+  to {
+    background: #f1f1f1;
+  }
 }

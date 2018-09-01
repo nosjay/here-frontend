@@ -1,15 +1,7 @@
-import { AXIOS_REQUEST_PRINTER, AXIOS_RESPONSE_PRINTER } from '../configs';
-import logging from '../utils/logging';
 import requestSignature from '../utils/request_token';
 
 
 export function onRequestSuccess(request) {
-  if (AXIOS_REQUEST_PRINTER) {
-    logging.group('RequestBefore')
-      .info(request)
-      .end();
-  }
-
   // sign backend request
   request.headers['X-Backend-Token'] = `h-${requestSignature()}`;
   // backend server select
@@ -25,11 +17,6 @@ export function onRequestFail(reason) {
 export function onResponseSuccess(response) {
   const responseData = response.data;
   const { status } = responseData;
-
-  if (AXIOS_RESPONSE_PRINTER) {
-    // eslint-disable-next-line no-console
-    console.info(`axios.onResponseSuccess: status=${status}`, response);
-  }
 
   switch (status) {
     case 0:

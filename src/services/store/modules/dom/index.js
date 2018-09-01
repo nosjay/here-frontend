@@ -1,10 +1,10 @@
 import { SET_TITLE_MUTATION } from './mutations';
-import { setTitle, getTtitle } from './title';
+import { setTitle, getTitle } from './title';
 
 
 export default {
   state: {
-    title: getTtitle(),
+    title: getTitle(),
   },
   getters: {},
   mutations: {

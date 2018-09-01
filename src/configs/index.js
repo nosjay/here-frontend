@@ -2,9 +2,6 @@
 export const NODE_ENV = process.env.NODE_ENV || 'production';
 export const IS_PRODUCTION_ENV = NODE_ENV === 'production';
 
-// enable ajax to MOCK data
-export const ENABLE_AJAX_LOCALLY = false;
-
 // default config for vue-router
 export const DEFAULT_ROUTER_CONFIG = {
   mode: 'history',
@@ -26,5 +23,4 @@ export const DEFAULT_VUEX_CONFIG = {
 export const VUE_DEBUG_TOOLS = true;
 export const VUE_PRODUCTION_TIPS = true;
 
-export const AXIOS_REQUEST_PRINTER = true;
-export const AXIOS_RESPONSE_PRINTER = true;
+export const AXIOS_DEFAULT_TOKEN = '00-ff-7cc1981f5-ff00';

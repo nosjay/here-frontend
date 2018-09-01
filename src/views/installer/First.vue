@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/">Go to Home</router-link>
+    <router-link to="second">Next Step</router-link>
   </div>
 </template>
 

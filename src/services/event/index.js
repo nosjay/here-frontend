@@ -2,6 +2,7 @@
 import Vue from 'vue';
 
 
+// global event bus
 GLOBAL.$Bus = new Vue();
 
 // page start loading event

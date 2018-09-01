@@ -17,9 +17,8 @@ class ActionProvider {
     this.axios = axiosInstance;
   }
 
-  // eslint-disable-next-line
-  wanna(action, params, data) {
-    this.axios.get(action);
+  init() {
+    return this.axios.get('/init');
   }
 }
 

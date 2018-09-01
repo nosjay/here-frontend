@@ -1,5 +1,5 @@
 /* title operators */
-export function getTtitle() {
+export function getTitle() {
   return document.title;
 }
 

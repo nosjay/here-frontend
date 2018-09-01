@@ -7,6 +7,6 @@ export default {
   // eslint-disable-next-line
   install: (Vue, options) => {
     // eslint-disable-next-line
-    Vue.prototype.$provider = provider;
+    Vue.prototype.$Provider = provider;
   },
 };
