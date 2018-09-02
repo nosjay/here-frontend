@@ -29,6 +29,10 @@
     padding: $layout-header-padding;
     height: $layout-header-height;
     line-height: $layout-header-height;
+
+    &--shadow {
+      @include layout-shadow;
+    }
   }
 
   &__aside {
@@ -49,7 +53,7 @@
     }
 
     &--shadow {
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, .05);
+      @include layout-shadow;
     }
 
     &--full-page {

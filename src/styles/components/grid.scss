@@ -1,0 +1,97 @@
+@import "../definitions";
+
+@mixin make-grid($prefix: '') {
+
+  @if ($prefix != '') {
+    $prefix: __#{$prefix};
+  }
+
+
+  @for $i from 1 to ($grid-columns + 1) {
+    &#{$prefix}--order--#{$i} {
+      order: $i;
+    }
+
+    &#{$prefix}--span--#{$i} {
+      display: block;
+      width: percentage($i / $grid-columns);
+    }
+
+    &#{$prefix}--offset--#{$i} {
+      margin-left: percentage($i / $grid-columns);
+    }
+  }
+}
+
+
+.h-grid {
+  &__row {
+    display: flex;
+
+    // Main axis
+    &--align {
+      &--top {
+        align-items: flex-start;
+      }
+
+      &--middle {
+        align-items: center;
+      }
+
+      &--bottom {
+        align-items: flex-end;
+      }
+    }
+
+    // cross axis
+    &--justify {
+      &--start {
+        justify-content: flex-start;
+      }
+
+      &--end {
+        justify-content: flex-end;
+      }
+
+      &--center {
+        justify-content: center;
+      }
+
+      &--space-around {
+        justify-content: space-around;
+      }
+
+      &--space-between {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__col {
+    float: left;
+    flex: 0 0 auto;
+
+    @include make-grid();
+
+    // Extra small grid
+    @include make-grid(xs);
+
+    // Small grid
+    @media (min-width: $screen-sm-min) {
+      @include make-grid(sm);
+    }
+
+
+    // Medium grid
+    @media (min-width: $screen-md-min) {
+      @include make-grid(md);
+    }
+
+
+    // Large grid
+    @media (min-width: $screen-lg-min) {
+      @include make-grid(lg);
+    }
+
+  }
+}

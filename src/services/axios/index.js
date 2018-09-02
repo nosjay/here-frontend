@@ -17,8 +17,15 @@ class ActionProvider {
     this.axios = axiosInstance;
   }
 
-  init() {
-    return this.axios.get('/init');
+  init(force = false) {
+    let params = {};
+    if (force) {
+      params = { ...params, force };
+    }
+
+    return this.axios.get('/init', {
+      params,
+    });
   }
 }
 

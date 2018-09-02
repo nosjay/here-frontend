@@ -8,6 +8,7 @@
 
 <script>
 import { SET_SECURITY_MUTATION } from './services/store/modules/security/mutations';
+import { SET_AUTHOR_MUTATION } from './services/store/modules/author/mutations';
 
 
 export default {
@@ -25,9 +26,9 @@ export default {
           requestMask: res.security.mask,
         });
 
-        if (res.install === true) {
+        if (res.author === false) {
           this.$router.replace({
-            name: 'installer-first',
+            name: 'installer',
           }, () => {
             // show page when redirect success
             this.loading = false;
@@ -38,6 +39,10 @@ export default {
         } else {
           // directly show homepage
           this.loading = false;
+          // commit author info
+          this.$store.commit(SET_AUTHOR_MUTATION, {
+            ...res.author,
+          });
         }
       });
   },
