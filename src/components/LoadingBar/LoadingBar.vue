@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const loadingBarBlockClass = 'h-loading-bar';
+const loadingBarBlockClass = 'h-LoadingBar';
 
 export default {
   name: 'LoadingBar',

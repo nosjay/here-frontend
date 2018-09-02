@@ -1,18 +1,22 @@
-import Aside from './aside';
-import Footer from './footer';
-import Header from './header';
-import Layout from './layout';
-import LoadingBar from './loading-bar';
-import Main from './main';
+import Aside from './Aside';
+import Col from './Col';
+import Footer from './Footer';
+import Header from './Header';
+import Layout from './Layout';
+import LoadingBar from './LoadingBar';
+import Main from './Main';
+import Row from './Row';
 
 
 const components = {
   Aside,
+  Col,
   Footer,
   Header,
   Layout,
   LoadingBar,
   Main,
+  Row,
 };
 
 export default {

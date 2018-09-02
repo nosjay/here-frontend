@@ -14,10 +14,19 @@ export default {
       type: String,
       default: '60px',
     },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     blockClasses() {
-      return [headerBlockClass];
+      return [
+        headerBlockClass,
+        {
+          [`${headerBlockClass}--shadow`]: this.shadow,
+        },
+      ];
     },
   },
 };

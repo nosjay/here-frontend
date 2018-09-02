@@ -1,4 +1,4 @@
-import LoadingBar from './loading-bar';
+import LoadingBar from './LoadingBar';
 
 
 let loadingBarInstance = null;

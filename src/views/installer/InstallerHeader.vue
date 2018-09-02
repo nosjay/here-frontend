@@ -1,12 +1,12 @@
 <template>
   <div>
-    <router-link to="second">Next Step</router-link>
+    aaa
   </div>
 </template>
 
 <script>
 export default {
-  name: 'InstallerFirst',
+  name: 'InstallerHeader',
 };
 </script>
 

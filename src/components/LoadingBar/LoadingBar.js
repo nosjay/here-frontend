@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import LoadingBar from './loading-bar.vue';
+import LoadingBar from './LoadingBar.vue';
 
 
 LoadingBar.newInstance = (properties) => {
   const props = properties || {};
 
-  // create new LoadingBar from 'loading-bar.vue'
+  // create new LoadingBar from 'LoadingBar.vue'
   let instance = new Vue({
     data: props,
     render(h) {
@@ -38,7 +38,7 @@ LoadingBar.newInstance = (properties) => {
     },
     destroy() {
       // remove HTMLNode from body
-      document.body.removeChild(document.getElementsByClassName('h-loading-bar')[0]);
+      document.body.removeChild(document.getElementsByClassName('h-LoadingBar')[0]);
       // destroy Vue instance
       instance = null;
     },
