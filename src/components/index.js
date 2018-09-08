@@ -6,6 +6,8 @@ import Layout from './Layout';
 import LoadingBar from './LoadingBar';
 import Main from './Main';
 import Row from './Row';
+import Step from './Step';
+import Steps from './Steps';
 
 
 const components = {
@@ -17,6 +19,8 @@ const components = {
   LoadingBar,
   Main,
   Row,
+  Step,
+  Steps,
 };
 
 export default {

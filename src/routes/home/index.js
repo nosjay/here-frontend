@@ -1,6 +1,5 @@
 // rules for homepage
 export default [{
-  name: 'index',
   path: '/',
   component: () => import('../../views/home/HomeLayout.vue'),
   children: [{
