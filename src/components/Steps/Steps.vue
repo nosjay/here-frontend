@@ -27,7 +27,7 @@ export default {
         return has(value, ['horizontal', 'vertical']);
       },
       default: 'horizontal',
-    }
+    },
   },
   computed: {
     blockClasses() {
@@ -67,3 +67,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '../../styles/components/steps';
+</style>

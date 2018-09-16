@@ -1,5 +1,14 @@
+@import '../definitions';
+
+
 * {
   box-sizing: border-box;
+}
+
+html, body {
+  color: $text-color;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
