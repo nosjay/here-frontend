@@ -10,11 +10,11 @@
       </Row>
     </Header>
     <!-- InstallGuide Main Body -->
-    <Main>
+    <Main id="h-install-guide__body" ref="installGuideMain">
       <Row>
-        <Col span="16" offset="4">
-          <button @click="incrCurrentStep">next</button>
-          <InstallerBody></InstallerBody>
+        <Col span="12" offset="6">
+          <InstallerBody>
+          </InstallerBody>
         </Col>
       </Row>
     </Main>
@@ -44,19 +44,32 @@ export default {
     };
   },
   methods: {
-    incrCurrentStep() {
-      if (this.currentStep === 3) {
-        this.currentStep = 0;
-      } else {
-        this.currentStep += 1;
-      }
-    },
+  },
+  mounted() {
+    this.$on('blog-complete', () => {
+      this.currentStep = 1;
+    });
+    this.$on('blog-cancel', () => {
+      this.currentStep = 0;
+    });
+
+    this.$on('user-complete', () => {
+      this.currentStep = 2;
+    });
+    this.$on('user-cancel', () => {
+      this.currentStep = 1;
+    });
+
+    this.$on('submitted', () => {
+      this.currentStep = 3;
+    });
   },
   components: { InstallerHeader, InstallerFooter, InstallerBody },
 };
 </script>
 
 <style lang="scss" scoped>
+
 #h-install-guide {
 
   &__header {
@@ -64,5 +77,7 @@ export default {
     flex-direction: column;
     justify-content: center;
   }
+
 }
+
 </style>
