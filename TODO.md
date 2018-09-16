@@ -4,6 +4,7 @@ Here-Frontend TODOs
 ### Planned
 4. Message Component
 6. Icon
+7. Signature
 
 
 ### Completed

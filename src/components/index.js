@@ -1,7 +1,11 @@
 import Aside from './Aside';
 import Col from './Col';
+import Divider from './Divider';
 import Footer from './Footer';
+import Form from './Form';
+import FormItem from './FormItem';
 import Header from './Header';
+import Input from './Input';
 import Layout from './Layout';
 import LoadingBar from './LoadingBar';
 import Main from './Main';
@@ -13,8 +17,12 @@ import Steps from './Steps';
 const components = {
   Aside,
   Col,
+  Divider,
   Footer,
+  Form,
+  FormItem,
   Header,
+  Input,
   Layout,
   LoadingBar,
   Main,

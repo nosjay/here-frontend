@@ -1,9 +1,12 @@
-import requestSignature from '../utils/request_token';
+import RequestSignature from '../utils/request_token';
+
+
+const signer = new RequestSignature();
 
 
 export function onRequestSuccess(request) {
   // sign backend request
-  request.headers['X-Backend-Token'] = `h-${requestSignature()}`;
+  request.headers['X-Backend-Token'] = `h-${signer.sign()}`;
   // backend server select
   request.headers['X-Server-Select'] = 'backend';
 

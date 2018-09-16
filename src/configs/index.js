@@ -24,3 +24,5 @@ export const VUE_DEBUG_TOOLS = true;
 export const VUE_PRODUCTION_TIPS = true;
 
 export const AXIOS_DEFAULT_TOKEN = '00-ff-7cc1981f5-ff00';
+export const AXIOS_REQUEST_MASK_1 = 0x13092cb0;
+export const AXIOS_REQUEST_MASK_2 = 0x1306b490;
