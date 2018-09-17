@@ -5,6 +5,7 @@
     </div>
 
     <input
+      :id="controlId"
       :class="`${blockClasses}_inner`"
       v-bind="$attrs"
       :type="type"
@@ -50,6 +51,9 @@ export default {
     autoFocus: {
       type: Boolean,
       default: false,
+    },
+    controlId: {
+      type: String,
     },
   },
   inject: {

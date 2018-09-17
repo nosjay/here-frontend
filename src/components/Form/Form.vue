@@ -30,7 +30,12 @@ export default {
   },
   computed: {
     blockClasses() {
-      return [formBlockClass];
+      return [
+        formBlockClass,
+        {
+          [`${formBlockClass}--inline`]: this.inline,
+        },
+      ];
     },
   },
   data() {
@@ -43,13 +48,43 @@ export default {
   },
   methods: {
     validate(callback) {
-      console.log(callback);
+      return new Promise((resolve) => {
+        let status = true;
+
+        this.fields.forEach((field) => {
+          field.validate('', (errors) => {
+            if (errors) {
+              status = false;
+            }
+          });
+        });
+
+        resolve(status);
+        if (typeof callback === 'function') {
+          callback(status);
+        }
+      });
     },
   },
   watch: {
     rules() {
       this.validate(() => {});
     },
+  },
+  created() {
+    this.$on('add-form-item', (field) => {
+      if (field) {
+        this.fields.push(field);
+      }
+      return false;
+    });
+
+    this.$on('remove-form-item', (field) => {
+      if (field.prop) {
+        this.fields.splice(this.fields.indexOf(field), 1);
+      }
+      return false;
+    });
   },
 };
 </script>
