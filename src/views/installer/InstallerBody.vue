@@ -4,12 +4,12 @@
     <div id="h-install-guide-blog-section">
       <Divider title="Blog Information" />
       <Form id="h-install-guide__body__form__blog" :model="bloggerInfo" :disabled="submitStatus">
-        <FormItem>
-          <Input v-model="bloggerInfo.title" />
+        <FormItem label="Blog Title" label-for="blog__form__title">
+          <Input control-id="blog__form__title" v-model="bloggerInfo.title" />
         </FormItem>
 
-        <FormItem>
-          <Input v-model="bloggerInfo.subTitle" />
+        <FormItem label="Blog SubTitle" label-for="blog__form__sub-title">
+          <Input control-id="blog__form__sub-title" v-model="bloggerInfo.subTitle" />
         </FormItem>
       </Form>
     </div>
@@ -18,16 +18,16 @@
       <div id="h-install-guide-user-section" v-if="userInfoShow">
         <Divider title="User Information" />
         <Form id="h-install-guide__body__form__user" :model="userInfo" :disabled="submitStatus">
-          <FormItem>
-            <Input v-model="userInfo.email" />
+          <FormItem label="E-Mail" label-for="user__form__email">
+            <Input control-id="user__form__email" v-model="userInfo.email" />
           </FormItem>
 
-          <FormItem>
-            <Input v-model="userInfo.username" />
+          <FormItem label="Username" label-for="user__form__username">
+            <Input control-id="user__form__username" v-model="userInfo.username" />
           </FormItem>
 
-          <FormItem>
-            <Input v-model="userInfo.password" />
+          <FormItem label="Password" label-for="user__form__password">
+            <Input control-id="user__form__password" v-model="userInfo.password" type="password" />
           </FormItem>
         </Form>
       </div>
@@ -95,6 +95,11 @@ export default {
 
 #h-install-guide__body__form {
   padding: 1rem 2.5rem;
+}
+
+#h-install-guide__body__form__blog,
+#h-install-guide__body__form__user {
+  margin-left: 1.5rem;
 }
 
 #h-install-guide-user-section {
