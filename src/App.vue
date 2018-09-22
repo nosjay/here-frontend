@@ -19,31 +19,27 @@ export default {
     };
   },
   mounted() {
-    this.$Provider.init()
-      .then((res) => {
+    this.$Provider.init().then(res => res.config(null, true))
+      .then((getter) => {
         this.$store.commit(SET_SECURITY_MUTATION, {
-          publicKey: res.security.rsa,
-          requestMask: res.security.mask,
+          publicKey: getter.get('security.rsa'),
+          timestampMask: getter.get('security.mask'),
         });
 
-        if (res.author === false) {
-          this.$router.replace({
-            name: 'installer',
-          }, () => {
-            // show page when redirect success
-            this.loading = false;
-          }, () => {
-            // show page when redirect abort
-            this.loading = false;
-          });
-        } else {
-          // directly show homepage
+        const hideLoading = () => {
           this.loading = false;
-          // commit author info
+        };
+
+        if (getter.get('author') === false) {
+          this.$router.replace({ name: 'installer' }, hideLoading, hideLoading);
+        } else {
+          hideLoading();
           this.$store.commit(SET_AUTHOR_MUTATION, {
-            ...res.author,
+            ...getter.get('author'),
           });
         }
+      }, (error) => {
+        console.log(error);
       });
   },
 };

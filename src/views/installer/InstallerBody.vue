@@ -15,7 +15,7 @@
     </div>
 
     <transition name="fade">
-      <div id="h-install-guide-user-section" v-if="userInfoShow">
+      <div id="h-install-guide-user-section" v-show="userInfoShow">
         <Divider title="User Information" />
         <Form id="h-install-guide__body__form__user" :model="userInfo" :disabled="submitStatus">
           <FormItem label="E-Mail" label-for="user__form__email">
@@ -34,7 +34,7 @@
     </transition>
 
     <transition name="fade">
-      <div id="h-install-guide-submit" v-if="submitBtnShow">
+      <div id="h-install-guide-submit" v-show="submitBtnShow && userInfoShow">
         <button @click="handleSubmit" :disabled="submitStatus">Submit</button>
       </div>
     </transition>

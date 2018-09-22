@@ -18,6 +18,10 @@ export function onRequestFail(reason) {
 }
 
 export function onResponseSuccess(response) {
+  if (typeof response.data === 'string') {
+    return Promise.reject(new Error('server internal error'));
+  }
+
   const responseData = response.data;
   const { status } = responseData;
 
