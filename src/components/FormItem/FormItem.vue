@@ -7,7 +7,7 @@
       <slot name="label">{{ label }}</slot>
     </label>
 
-    <div :class="`${formItemBlockClass}__body`">
+    <div :class="`${formItemBlockClass}__body`" :style="{marginLeft: labelWidth}">
       <slot></slot>
 
       <transition name="fade">
@@ -32,13 +32,19 @@ export default {
     label: {
       type: String,
     },
+    labelWidth: {
+      type: String,
+      default: '80px',
+    },
   },
   computed: {
     blockClasses() {
       return [formItemBlockClass];
     },
     labelStyles() {
-      return {};
+      return {
+        width: this.labelWidth,
+      };
     },
     labelShow() {
       return !!(this.label || this.$slots.label);
@@ -55,7 +61,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>

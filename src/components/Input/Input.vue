@@ -6,13 +6,14 @@
 
     <input
       :id="controlId"
-      :class="`${blockClasses}_inner`"
+      :class="`${blockClasses}__inner`"
       v-bind="$attrs"
       :type="type"
       :disabled="disabled"
       :readonly="readonly"
       ref="input"
       title=""
+      :placeholder="placeholder"
       @input="handleInput"
     >
   </div>
@@ -74,6 +75,6 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style lang="scss">
+@import '../../styles/components/input';
 </style>

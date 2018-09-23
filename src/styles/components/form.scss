@@ -1,0 +1,80 @@
+@import '../definitions';
+
+
+$form-label-font-align: left;
+$form-label-font-size: 14px;
+$form-body-font-size: $form-label-font-size;
+$form-label-required-color: #f56c6c;
+
+
+.h-form {
+
+  &--inline {
+    &__item {
+      display: inline-block;
+      margin-right: 10px;
+      vertical-align: top;
+
+      &__label {
+        float: none;
+        display: inline-block;
+
+        &:required {
+          &:before {
+            content: '*';
+            color: $form-label-required-color;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      &__body {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: 20px;
+
+    &:before, &:after {
+      display: table;
+      content: "";
+    }
+
+    &:after {
+      clear: both
+    }
+
+    &__label {
+      width: 80px;
+      text-align: $form-label-font-align;
+      vertical-align: middle;
+      float: left;
+      font-size: $form-label-font-size;
+      color: $text-color;
+      line-height: 40px;
+      padding: 0 12px 0 0;
+      box-sizing: border-box;
+    }
+
+    &__body {
+      line-height: 40px;
+      position: relative;
+      font-size: $form-body-font-size;
+      margin-left: 80px;
+
+      &:before, &:after {
+        display: table;
+        content: "";
+      }
+
+      &:after {
+        clear: both
+      }
+    }
+
+  }
+
+}

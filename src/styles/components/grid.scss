@@ -6,7 +6,6 @@
     $prefix: __#{$prefix};
   }
 
-
   @for $i from 1 to ($grid-columns + 1) {
     &#{$prefix}--order--#{$i} {
       order: $i;
@@ -81,12 +80,10 @@
       @include make-grid(sm);
     }
 
-
     // Medium grid
     @media (min-width: $screen-md-min) {
       @include make-grid(md);
     }
-
 
     // Large grid
     @media (min-width: $screen-lg-min) {
