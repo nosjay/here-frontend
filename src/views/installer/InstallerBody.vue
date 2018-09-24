@@ -8,14 +8,14 @@
           <Input
             control-id="blog__form__title"
             v-model="bloggerInfo.title"
-            placeholder="Please enter the title of the blog"/>
+            placeholder="Please enter the title of your blog"/>
         </FormItem>
 
-        <FormItem label="Blog Subtitle" label-for="blog__form__sub-title" label-width="100px">
+        <FormItem label="Description" label-for="blog__form__description" label-width="100px">
           <Input
-            control-id="blog__form__sub-title"
-            v-model="bloggerInfo.subTitle"
-            placeholder="Please enter the subtitle of your blog"/>
+            control-id="blog__form__description"
+            v-model="bloggerInfo.description"
+            placeholder="Please enter the description of your blog"/>
         </FormItem>
       </Form>
     </div>
@@ -69,7 +69,7 @@ export default {
   mixins: [Emitter],
   computed: {
     userInfoShow() {
-      return !!(this.bloggerInfo.title && this.bloggerInfo.subTitle);
+      return !!(this.bloggerInfo.title && this.bloggerInfo.description);
     },
     submitBtnShow() {
       return !!(this.userInfo.email && this.userInfo.username && this.userInfo.password);
@@ -79,7 +79,7 @@ export default {
     return {
       bloggerInfo: {
         title: '',
-        subTitle: '',
+        description: '',
       },
       userInfo: {
         email: '',
