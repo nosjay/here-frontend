@@ -1,5 +1,5 @@
 <template>
-  <Layout full-page id="h-install-guide">
+  <Layout full-page id="h-install-guide" v-selection.disabled="" v-context-menu.disabled="">
     <!-- InstallGuide Header -->
     <Header shadow id="h-install-guide__header">
       <Row>
