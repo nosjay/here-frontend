@@ -19,3 +19,9 @@ GLOBAL.$Bus.$on('page.ready', () => {
 GLOBAL.$Bus.$on('page.error', () => {
   GLOBAL.$Loading.error();
 });
+
+// error dialog
+GLOBAL.$Bus.$on('dialog.error', (error) => {
+  // eslint-disable-next-line
+  console.log(error);
+});

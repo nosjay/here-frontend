@@ -17,6 +17,8 @@ Object.keys(directives).forEach((name) => {
 
 // disable production tips
 Vue.config.productionTip = VUE_PRODUCTION_TIPS;
+
+// inject services/components to Vue prototype
 Vue.use(inject);
 Vue.use(Components);
 

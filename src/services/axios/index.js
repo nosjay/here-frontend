@@ -83,7 +83,7 @@ class ActionProvider {
       .then(res => (new ResponseGetter()).setResponse(res))
       .catch((error) => {
         // report error
-        GLOBAL.$Bus.$emit('global.$dialog.error', error);
+        GLOBAL.$Bus.$emit('dialog.error', error);
         return (new ResponseGetter()).setError(error);
       });
   }
