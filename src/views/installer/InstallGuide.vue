@@ -11,6 +11,8 @@
       </Row>
     </Header>
 
+    <router-link to="/">Go to Home</router-link>
+
     <!-- InstallGuide Main Body -->
     <Main id="h-install-guide__body" ref="installGuideMain">
       <Row>

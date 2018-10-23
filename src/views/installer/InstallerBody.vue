@@ -8,7 +8,7 @@
       <Divider title="Blog Information" class="h-install-guide-section">
         <div>
           <!-- Blog Title -->
-          <FormItem label="Blog Title" label-for="form__title" label-width="100px">
+          <FormItem label="Blog Title" label-for="form__title" label-width="100px" prop="title">
             <Input
               control-id="form__title"
               v-model="registerForm.title"
@@ -17,7 +17,8 @@
           </FormItem>
 
           <!-- Blog Description -->
-          <FormItem label="Description" label-for="form__description" label-width="100px">
+          <FormItem label="Description" label-for="form__description" label-width="100px"
+                    prop="description">
             <Input
               control-id="form__description"
               v-model="registerForm.description"
@@ -32,7 +33,7 @@
         <Divider title="User Information" class="h-install-guide-section" v-show="userInfoShow">
           <div>
             <!-- User E-Mail -->
-            <FormItem label="Mail" label-for="form__email" label-width="100px">
+            <FormItem label="Mail" label-for="form__email" label-width="100px" prop="email">
               <Input
                 control-id="form__email"
                 v-model="registerForm.email"
@@ -41,7 +42,8 @@
             </FormItem>
 
             <!-- User Nickname -->
-            <FormItem label="Username" label-for="form__username" label-width="100px">
+            <FormItem label="Username" label-for="form__username" label-width="100px"
+                      prop="username">
               <Input
                 control-id="form__username"
                 v-model="registerForm.username"
@@ -50,7 +52,8 @@
             </FormItem>
 
             <!-- User Password -->
-            <FormItem label="Password" label-for="form__password" label-width="100px">
+            <FormItem label="Password" label-for="form__password" label-width="100px"
+                      prop="password">
               <Input
                 control-id="form__password"
                 v-model="registerForm.password"

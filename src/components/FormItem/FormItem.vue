@@ -20,11 +20,15 @@
 </template>
 
 <script>
+import Emitter from '../../utils/emitter';
+
 const formItemBlockClass = 'h-form__item';
 
 
 export default {
   name: 'FormItem',
+  mixins: [Emitter],
+  inject: ['form'],
   props: {
     labelFor: {
       type: String,
@@ -35,6 +39,9 @@ export default {
     labelWidth: {
       type: String,
       default: '80px',
+    },
+    prop: {
+      type: String,
     },
   },
   computed: {
@@ -49,6 +56,17 @@ export default {
     labelShow() {
       return !!(this.label || this.$slots.label);
     },
+    fieldValue: {
+      cache: false,
+      get() {
+        if (this.form.model && this.prop) {
+          if (this.form.model[this.prop]) {
+            return this.form.model[this.prop];
+          }
+        }
+        return null;
+      },
+    },
   },
   data() {
     return {
@@ -58,6 +76,18 @@ export default {
       validateMessage: '',
       validator: {},
     };
+  },
+  mounted() {
+    if (this.prop) {
+      this.dispatch('Form', 'add-form-item', [this]);
+
+      Object.defineProperty(this, 'initialValue', {
+        value: this.fieldValue,
+      });
+    }
+  },
+  beforeDestroy() {
+    this.dispatch('Form', 'remove-form-item', [this]);
   },
 };
 </script>
