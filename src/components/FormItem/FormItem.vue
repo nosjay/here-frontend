@@ -7,7 +7,7 @@
       <slot name="label">{{ label }}</slot>
     </label>
 
-    <div :class="`${formItemBlockClass}__body`" :style="{marginLeft: labelWidth}">
+    <div :class="`${formItemBlockClass}__body`" :style="bodyStyles">
       <slot></slot>
 
       <transition name="fade">
@@ -50,7 +50,12 @@ export default {
     },
     labelStyles() {
       return {
-        width: this.labelWidth,
+        width: this.labelWidth || this.form.labelWidth,
+      };
+    },
+    bodyStyles() {
+      return {
+        marginLeft: this.labelWidth || this.form.labelWidth,
       };
     },
     labelShow() {

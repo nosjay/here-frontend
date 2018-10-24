@@ -7,6 +7,7 @@
 <script>
 const formBlockClass = 'h-form';
 
+
 export default {
   name: 'Form',
   props: {
@@ -17,7 +18,8 @@ export default {
       type: Object,
     },
     labelWidth: {
-      type: Number,
+      type: String,
+      default: '80px',
     },
     inline: {
       type: Boolean,
