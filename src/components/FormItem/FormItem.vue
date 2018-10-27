@@ -30,23 +30,30 @@ export default {
   mixins: [Emitter],
   inject: ['form'],
   props: {
-    labelFor: {
+    label: {
       type: String,
     },
-    label: {
+    labelFor: {
       type: String,
     },
     labelWidth: {
       type: String,
-      default: '80px',
     },
     prop: {
       type: String,
     },
+    required: {
+      type: Boolean,
+    },
   },
   computed: {
     blockClasses() {
-      return [formItemBlockClass];
+      return [
+        formItemBlockClass,
+        {
+          [`${formItemBlockClass}--required`]: this.required || this.isRequired,
+        },
+      ];
     },
     labelStyles() {
       return {
@@ -81,6 +88,14 @@ export default {
       validateMessage: '',
       validator: {},
     };
+  },
+  methods: {
+    reset() {
+      this.validateState = '';
+      this.validateMessage = '';
+    },
+    validate(trigger, callback) {
+    },
   },
   mounted() {
     if (this.prop) {

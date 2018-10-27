@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { has } from '../../utils/assist';
+
 const formBlockClass = 'h-form';
 
 
@@ -29,11 +31,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    labelIn: {
+      validator(value) {
+        return has(value, ['left', 'right', 'top']);
+      },
+      default: 'right',
+    },
   },
   computed: {
     blockClasses() {
       return [
         formBlockClass,
+        `${formBlockClass}--label-${this.labelIn}`,
         {
           [`${formBlockClass}--inline`]: this.inline,
         },
@@ -67,10 +76,15 @@ export default {
         }
       });
     },
+    resetFields() {
+      this.fieldValue.forEach((field) => {
+        field.reset();
+      });
+    },
   },
   watch: {
     rules() {
-      this.validate(() => {});
+      this.validate();
     },
   },
   created() {
