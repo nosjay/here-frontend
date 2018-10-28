@@ -42,7 +42,7 @@ $input-inner-disabled-placeholder-color: $input-inner-disabled-color;
     position: relative;
     cursor: text;
     outline: none;
-    transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+    transition: all $transition-time cubic-bezier(.645, .045, .355, 1);
 
     &::placeholder {
       color: $input-inner-placeholder-color;
@@ -67,5 +67,24 @@ $input-inner-disabled-placeholder-color: $input-inner-disabled-color;
         color: $input-inner-disabled-placeholder-color;
       }
     }
+  }
+
+  // validate-error input
+  .h-form__item--error & {
+
+    &__inner {
+      border: 1px solid $error-color;
+
+      &:hover {
+        border-color: $error-color;
+      }
+
+      &:focus {
+        border-color: $error-color;
+        outline: 0;
+        box-shadow: 0 0 5px 2px rgba($error-color, .2);
+      }
+    }
+
   }
 }

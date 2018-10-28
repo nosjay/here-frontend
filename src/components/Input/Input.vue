@@ -15,18 +15,22 @@
       title=""
       :placeholder="placeholder"
       @input="handleInput"
+      @blur="blurHandler"
+      @change="changeHandler"
     >
   </div>
 </template>
 
 <script>
 import { has } from '../../utils/assist';
+import Emitter from '../../utils/emitter';
 
 const inputBlockClass = 'h-input';
 
 
 export default {
   name: 'Input',
+  mixins: [Emitter],
   props: {
     type: {
       validator(value) {
@@ -70,6 +74,17 @@ export default {
   methods: {
     handleInput(event) {
       this.$emit('input', event.target.value);
+    },
+    blurHandler(event) {
+      this.$emit('blur', event);
+      this.dispatch('FormItem', 'form-controller-blur', [event]);
+    },
+    changeHandler(event) {
+      /**
+       * this.$emit('change', event);
+       * replace by watch
+       */
+      this.dispatch('FormItem', 'from-controller-change', [event]);
     },
   },
 };

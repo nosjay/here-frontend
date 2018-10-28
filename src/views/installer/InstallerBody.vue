@@ -2,63 +2,59 @@
   <div id="h-install-guide__body__form">
 
     <!-- Register Form -->
-    <Form :model="registerForm" :disabled="submitStatus" label-width="100px">
+    <Form :model="registerForm" :disabled="submitStatus" label-width="100px" :rules="rules">
 
       <!-- Blog Information -->
       <Divider title="Blog Information" class="h-install-guide-section">
-        <div>
-          <!-- Blog Title -->
-          <FormItem label="Blog Title" label-for="form__title" prop="title">
-            <Input
-              control-id="form__title"
-              v-model="registerForm.title"
-              placeholder="Please enter the title of your blog"
-            />
-          </FormItem>
+        <!-- Blog Title -->
+        <FormItem label="Blog Title" label-for="form__title" prop="title">
+          <Input
+            control-id="form__title"
+            v-model="registerForm.title"
+            placeholder="Please enter the title of your blog"
+          />
+        </FormItem>
 
-          <!-- Blog Description -->
-          <FormItem label="Description" label-for="form__description" prop="description">
-            <Input
-              control-id="form__description"
-              v-model="registerForm.description"
-              placeholder="Please enter the description of your blog"
-            />
-          </FormItem>
-        </div>
+        <!-- Blog Description -->
+        <FormItem label="Description" label-for="form__description" prop="description">
+          <Input
+            control-id="form__description"
+            v-model="registerForm.description"
+            placeholder="Please enter the description of your blog"
+          />
+        </FormItem>
       </Divider> <!-- Blog Information End -->
 
       <transition name="fade">
         <!-- User Information -->
         <Divider title="User Information" class="h-install-guide-section" v-show="userInfoShow">
-          <div>
-            <!-- User E-Mail -->
-            <FormItem label="Mail" label-for="form__email" prop="email">
-              <Input
-                control-id="form__email"
-                v-model="registerForm.email"
-                placeholder="Please enter the blogger's email address"
-              />
-            </FormItem>
+          <!-- User E-Mail -->
+          <FormItem label="E-Mail" label-for="form__email" prop="email">
+            <Input
+              control-id="form__email"
+              v-model="registerForm.email"
+              placeholder="Please enter the blogger's email address"
+            />
+          </FormItem>
 
-            <!-- User Nickname -->
-            <FormItem label="Username" label-for="form__username" prop="username">
-              <Input
-                control-id="form__username"
-                v-model="registerForm.username"
-                placeholder="Please enter the user name that the blogger uses to login"
-              />
-            </FormItem>
+          <!-- User Nickname -->
+          <FormItem label="Username" label-for="form__username" prop="username">
+            <Input
+              control-id="form__username"
+              v-model="registerForm.username"
+              placeholder="Please enter the user name that the blogger uses to login"
+            />
+          </FormItem>
 
-            <!-- User Password -->
-            <FormItem label="Password" label-for="form__password" prop="password">
-              <Input
-                control-id="form__password"
-                v-model="registerForm.password"
-                type="password"
-                placeholder="Please enter the blogger's password for login"
-              />
-            </FormItem>
-          </div>
+          <!-- User Password -->
+          <FormItem label="Password" label-for="form__password" prop="password">
+            <Input
+              control-id="form__password"
+              v-model="registerForm.password"
+              type="password"
+              placeholder="Please enter the blogger's password for login"
+            />
+          </FormItem>
         </Divider> <!-- User Information End -->
       </transition>
 
@@ -98,6 +94,23 @@ export default {
         email: '',
         username: '',
         password: '',
+      },
+      rules: {
+        title: [
+          { required: true, message: 'The title of your blog cannot be empty', trigger: 'blur' },
+        ],
+        description: [
+          { required: true, message: 'The description of your blog cannot be empty', trigger: 'blur' },
+        ],
+        email: [
+          { required: true, message: 'No e-mail how to accept flattery:)', trigger: 'blur' },
+        ],
+        username: [
+          { required: true, message: 'Blog cannot be published by anonymous!', trigger: 'blur' },
+        ],
+        password: [
+          { required: true, message: 'What do you think of it?', trigger: 'blur' },
+        ],
       },
       submitStatus: false,
     };
