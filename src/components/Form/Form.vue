@@ -101,7 +101,6 @@ export default {
       }
       return false;
     });
-    console.log([this]);
   },
 };
 </script>
