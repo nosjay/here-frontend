@@ -9,7 +9,8 @@
       :class="`${blockClasses}__inner`"
       v-bind="$attrs"
       :type="type"
-      :disabled="disabled"
+      :disabled="inputDisabled"
+      :autofocus="autofocus"
       :readonly="readonly"
       ref="input"
       title=""
@@ -17,6 +18,10 @@
       @input="handleInput"
       @blur="blurHandler"
       @change="changeHandler"
+      @focus="focusHandler"
+      @compositionstart="compositionHandler"
+      @compositionupdate="compositionHandler"
+      @compositionend="compositionHandler"
     >
   </div>
 </template>
@@ -31,6 +36,11 @@ const inputBlockClass = 'h-input';
 export default {
   name: 'Input',
   mixins: [Emitter],
+  inject: {
+    form: {
+      default: null,
+    },
+  },
   props: {
     type: {
       validator(value) {
@@ -49,6 +59,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    autofocus: {
+      type: Boolean,
+      default: false,
+    },
     readonly: {
       type: Boolean,
       default: false,
@@ -61,18 +75,24 @@ export default {
       type: String,
     },
   },
-  inject: {
-    form: {
-      default: null,
-    },
-  },
   computed: {
     blockClasses() {
       return [inputBlockClass];
     },
+    inputDisabled() {
+      return this.disabled || (this.form || {}).disabled;
+    },
+  },
+  data() {
+    return {
+      onComposition: false,
+    };
   },
   methods: {
     handleInput(event) {
+      if (this.onComposition) {
+        return;
+      }
       this.$emit('input', event.target.value);
     },
     blurHandler(event) {
@@ -85,6 +105,17 @@ export default {
        * replace by watch
        */
       this.dispatch('FormItem', 'from-controller-change', [event]);
+    },
+    focusHandler(event) {
+      this.$emit('focus', event);
+    },
+    compositionHandler(event) {
+      if (event.type === 'compositionend') {
+        this.onComposition = false;
+        this.handleInput(event);
+      } else {
+        this.onComposition = true;
+      }
     },
   },
 };

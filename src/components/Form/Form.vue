@@ -77,7 +77,7 @@ export default {
       });
     },
     resetFields() {
-      this.fieldValue.forEach((field) => {
+      this.fields.forEach((field) => {
         field.reset();
       });
     },
@@ -101,6 +101,7 @@ export default {
       }
       return false;
     });
+    console.log([this]);
   },
 };
 </script>

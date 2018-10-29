@@ -29,7 +29,11 @@ const formItemBlockClass = 'h-form__item';
 export default {
   name: 'FormItem',
   mixins: [Emitter],
-  inject: ['form'],
+  inject: {
+    form: {
+      default: null,
+    },
+  },
   props: {
     label: {
       type: String,
