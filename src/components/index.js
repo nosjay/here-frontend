@@ -1,4 +1,5 @@
 import Aside from './Aside';
+import Button from './Button';
 import Col from './Col';
 import Divider from './Divider';
 import Footer from './Footer';
@@ -16,6 +17,7 @@ import Steps from './Steps';
 
 const components = {
   Aside,
+  Button,
   Col,
   Divider,
   Footer,
