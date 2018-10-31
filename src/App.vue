@@ -31,7 +31,8 @@ export default {
         };
 
         if (getter.get('author') === false) {
-          this.$router.replace({ name: 'installer' }, hideLoading, hideLoading);
+          // @TODO cannot get route-name from router and query will lost, because using lazy-load
+          this.$router.replace({ name: 'installer', query: this.$route.query }, hideLoading, hideLoading);
         } else {
           hideLoading();
           this.$store.commit(SET_AUTHOR_MUTATION, {

@@ -61,7 +61,7 @@
       <!-- Submit Button -->
       <transition name="fade">
         <div class="h-install-guide-section" v-show="submitBtnShow && userInfoShow">
-          <Button>Done</Button>
+          <Button @click="submitHandler">Done</Button>
           <!--<button @click="handleSubmit" :disabled="submitStatus">Completed</button>-->
         </div>
       </transition>
@@ -117,7 +117,7 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
+    submitHandler() {
       this.submitStatus = true;
     },
   },
