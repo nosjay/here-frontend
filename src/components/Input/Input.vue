@@ -15,7 +15,7 @@
       ref="input"
       title=""
       :placeholder="placeholder"
-      @input="handleInput"
+      @input="inputHandler"
       @blur="blurHandler"
       @change="changeHandler"
       @focus="focusHandler"
@@ -89,7 +89,7 @@ export default {
     };
   },
   methods: {
-    handleInput(event) {
+    inputHandler(event) {
       if (this.onComposition) {
         return;
       }
@@ -112,7 +112,7 @@ export default {
     compositionHandler(event) {
       if (event.type === 'compositionend') {
         this.onComposition = false;
-        this.handleInput(event);
+        this.inputHandler(event);
       } else {
         this.onComposition = true;
       }

@@ -8,6 +8,7 @@ import FormItem from './FormItem';
 import Header from './Header';
 import Input from './Input';
 import Layout from './Layout';
+import Loading from './Loading';
 import LoadingBar from './LoadingBar';
 import Main from './Main';
 import Row from './Row';
@@ -26,6 +27,7 @@ const components = {
   Header,
   Input,
   Layout,
+  Loading,
   LoadingBar,
   Main,
   Row,
