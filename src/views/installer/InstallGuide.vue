@@ -11,8 +11,6 @@
       </Row>
     </Header>
 
-    <router-link to="/">Go to Home</router-link>
-
     <!-- InstallGuide Main Body -->
     <Main id="h-install-guide__body" ref="installGuideMain">
       <Row>
@@ -35,6 +33,7 @@
 </template>
 
 <script>
+import { SET_TITLE_MUTATION } from '../../services/store/modules/dom/mutations';
 import InstallerHeader from './InstallerHeader.vue';
 import InstallerFooter from './InstallerFooter.vue';
 import InstallerBody from './InstallerBody.vue';
@@ -56,6 +55,10 @@ export default {
   methods: {
   },
   mounted() {
+    this.$store.commit(SET_TITLE_MUTATION, {
+      title: 'Install Guide',
+    });
+
     this.$on('blog-complete', () => {
       this.currentStep = STATE_USER_EDIT;
     });

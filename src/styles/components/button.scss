@@ -1,6 +1,32 @@
 @import '../definitions';
+@import '../mixins/button';
 
 
 .h-button {
+  @include button-base;
+  @include button-default;
 
+  &--primary {
+    @include button-primary;
+  }
+
+  &--dashed {
+    @include button-dashed;
+  }
+
+  &--text {
+    @include button-text;
+  }
+
+  &--success {
+    @include button-success;
+  }
+
+  &--warning {
+    @include button-warning;
+  }
+
+  &--danger {
+    @include button-danger;
+  }
 }

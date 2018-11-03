@@ -61,8 +61,12 @@
       <!-- Submit Button -->
       <transition name="fade">
         <div class="h-install-guide-section" v-show="submitBtnShow && userInfoShow">
-          <Button @click="submitHandler">Done</Button>
-          <!--<button @click="handleSubmit" :disabled="submitStatus">Completed</button>-->
+          <Button :loading="submitStatus" :disabled="submitStatus" type="primary"
+                  @click.prevent.stop="submitHandler"
+          >
+            <span v-if="submitStatus">Loading</span>
+            <span v-else>Done</span>
+          </Button>
         </div>
       </transition>
 
