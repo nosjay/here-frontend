@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DEFAULT_AXIOS_CONFIG } from '../../configs';
+import { DEFAULT_AXIOS_CONFIG, GLOBAL_VARIABLES } from '../../configs';
 import {
   onRequestSuccess, onRequestFail,
   onResponseSuccess, onResponseFail,
@@ -83,7 +83,7 @@ class ActionProvider {
       .then(res => (new ResponseGetter()).setResponse(res))
       .catch((error) => {
         // report error
-        GLOBAL.$Bus.$emit('dialog.error', error);
+        GLOBAL_VARIABLES.$Bus.$emit('dialog.error', error);
         return (new ResponseGetter()).setError(error);
       });
   }

@@ -1,3 +1,4 @@
+import { GLOBAL_VARIABLES } from '../configs';
 import RequestSignature from '../utils/request_token';
 
 
@@ -29,7 +30,7 @@ export function onResponseSuccess(response) {
     case 0:
       return responseData.data;
     default:
-      GLOBAL.$Bus.$emit('global.$dialog.error', responseData.message);
+      GLOBAL_VARIABLES.$Bus.$emit('global.$dialog.error', responseData.message);
       return Promise.reject(responseData);
   }
 }

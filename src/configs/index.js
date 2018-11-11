@@ -19,6 +19,10 @@ export const DEFAULT_VUEX_CONFIG = {
   strict: NODE_ENV !== 'production',
 };
 
+// global variables
+export const GLOBAL_VARIABLES = {};
+console.log(GLOBAL_VARIABLES);
+
 // something else
 export const VUE_DEBUG_TOOLS = true;
 export const VUE_PRODUCTION_TIPS = true;

@@ -19,18 +19,18 @@ export default {
     };
   },
   mounted() {
+    const hideLoading = () => {
+      this.loading = false;
+    };
+
     this.$Provider.init().then(res => res.config(null, true))
       .then((getter) => {
         this.$store.commit(SET_SECURITY_MUTATION, {
-          publicKey: getter.get('security.rsa'),
-          timestampMask: getter.get('security.mask'),
+          publicKey: getter.get('security.key'),
+          requestMask: getter.get('security.mask'),
         });
 
-        const hideLoading = () => {
-          this.loading = false;
-        };
-
-        if (getter.get('author') === false) {
+        if (!getter.get('author')) {
           // @TODO cannot get route-name from router and query will lost, because using lazy-load
           this.$router.replace({ name: 'installer', query: this.$route.query }, hideLoading, hideLoading);
         } else {

@@ -1,3 +1,5 @@
+import { GLOBAL_VARIABLES } from '../configs';
+
 import Aside from './Aside';
 import Button from './Button';
 import Col from './Col';
@@ -42,7 +44,7 @@ export default {
       Vue.component(name, components[name]);
     });
 
-    GLOBAL.$Loading = LoadingBar;
+    GLOBAL_VARIABLES.$Loading = LoadingBar;
     Vue.prototype.$Loading = LoadingBar; // eslint-disable-line no-param-reassign
   },
 };

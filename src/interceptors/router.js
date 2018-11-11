@@ -1,6 +1,9 @@
+import { GLOBAL_VARIABLES } from '../configs';
+
+
 // vue-router global guards
 export function onRouterBeforeEach(to, from, next) {
-  GLOBAL.$Bus.$emit('page.loading');
+  GLOBAL_VARIABLES.$Bus.$emit('page.loading');
 
   next();
 }
@@ -8,5 +11,5 @@ export function onRouterBeforeEach(to, from, next) {
 // vue-router global after hooks, just notification
 export function onRouterAfterEach(to, from) { // eslint-disable-line
   // route completed
-  GLOBAL.$Bus.$emit('page.ready');
+  GLOBAL_VARIABLES.$Bus.$emit('page.ready');
 }

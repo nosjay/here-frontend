@@ -1,27 +1,28 @@
 // event bus for global/common components
 import Vue from 'vue';
+import { GLOBAL_VARIABLES } from '../../configs';
 
 
 // global event bus
-GLOBAL.$Bus = new Vue();
+GLOBAL_VARIABLES.$Bus = new Vue();
 
 // page start loading event
-GLOBAL.$Bus.$on('page.loading', () => {
-  GLOBAL.$Loading.start();
+GLOBAL_VARIABLES.$Bus.$on('page.loading', () => {
+  GLOBAL_VARIABLES.$Loading.start();
 });
 
 // page ready event
-GLOBAL.$Bus.$on('page.ready', () => {
-  GLOBAL.$Loading.finish();
+GLOBAL_VARIABLES.$Bus.$on('page.ready', () => {
+  GLOBAL_VARIABLES.$Loading.finish();
 });
 
 // page error event
-GLOBAL.$Bus.$on('page.error', () => {
-  GLOBAL.$Loading.error();
+GLOBAL_VARIABLES.$Bus.$on('page.error', () => {
+  GLOBAL_VARIABLES.$Loading.error();
 });
 
 // error dialog
-GLOBAL.$Bus.$on('dialog.error', (error) => {
+GLOBAL_VARIABLES.$Bus.$on('dialog.error', (error) => {
   // eslint-disable-next-line
   console.log(error);
 });

@@ -1,7 +1,8 @@
+import { GLOBAL_VARIABLES } from '../configs';
 import provider from '../services/axios';
 
 
-GLOBAL.$Provider = provider;
+GLOBAL_VARIABLES.$Provider = provider;
 
 export default {
   // eslint-disable-next-line
