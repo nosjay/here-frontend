@@ -2,7 +2,8 @@
   <div id="h-install-guide__body__form">
 
     <!-- Register Form -->
-    <Form :model="registerForm" :disabled="submitStatus" label-width="100px" :rules="rules">
+    <Form :model="registerForm" :disabled="submitStatus" label-width="100px" :rules="rules"
+          ref="form">
 
       <!-- Blog Information -->
       <Divider title="Blog Information" class="h-install-guide-section">
@@ -109,12 +110,15 @@ export default {
         ],
         email: [
           { required: true, message: 'No e-mail how to accept flattery:)', trigger: 'blur' },
+          { type: 'email', message: 'Deceiving yourself?' },
         ],
         username: [
           { required: true, message: 'Blog cannot be published by anonymous!', trigger: 'blur' },
         ],
         password: [
           { required: true, message: 'What do you think of it?', trigger: 'blur' },
+          { type: 'string', min: 6, message: 'Hmm, I can break this site' },
+          { type: 'string', pattern: /(\w+\d+\W+)|(\d+\w+\W+)|(\W+\w+\d+)/, message: 'Come on╮(╯▽╰)╭' },
         ],
       },
       submitStatus: false,
@@ -122,7 +126,17 @@ export default {
   },
   methods: {
     submitHandler() {
-      this.submitStatus = true;
+      this.$refs.form.validate((valid) => {
+        if (valid || true) {
+          this.submitStatus = true;
+          this.$Provider.blogger(this.registerForm).then(res => res.config(null, true))
+            .then((getter) => {
+              console.log(getter);
+            }, (error) => {
+              console.log((error));
+            });
+        }
+      });
     },
   },
   watch: {

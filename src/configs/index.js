@@ -21,7 +21,6 @@ export const DEFAULT_VUEX_CONFIG = {
 
 // global variables
 export const GLOBAL_VARIABLES = {};
-console.log(GLOBAL_VARIABLES);
 
 // something else
 export const VUE_DEBUG_TOOLS = true;

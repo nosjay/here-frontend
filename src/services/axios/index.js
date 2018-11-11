@@ -4,6 +4,7 @@ import {
   onRequestSuccess, onRequestFail,
   onResponseSuccess, onResponseFail,
 } from '../../interceptors/axios';
+import Encryption from '../../utils/encryption';
 
 
 const instance = axios.create(DEFAULT_AXIOS_CONFIG);
@@ -76,6 +77,15 @@ class ActionProvider {
     return this.request('get', '/init', {
       params,
     });
+  }
+
+  blogger({
+    title, description, email, username, password,
+  }) {
+    const encryption = new Encryption(GLOBAL_VARIABLES.$Store.state.security.publicKey);
+    return this.request('put', '/blogger', encryption.encrypt(JSON.stringify({
+      title, description, email, username, password,
+    })));
   }
 
   request(method, ...args) {
