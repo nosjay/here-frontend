@@ -1,14 +1,14 @@
 /* eslint-disable no-bitwise */
 
 // An array of bytes the size of the pool will be passed to init()
-export const POLL_SIZE = 256;
+export const POOL_SIZE = 256;
 
 // RC4 cipher
 export default class RC4 {
   constructor(key) {
     this.i = 0;
     this.j = 0;
-    this.s = [...Array(256).keys()];
+    this.s = [...Array(POOL_SIZE).keys()];
 
     let j = 0;
     this.s.forEach((value, index) => {

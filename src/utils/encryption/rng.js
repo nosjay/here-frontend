@@ -1,13 +1,14 @@
 /* eslint-disable no-plusplus,no-bitwise,no-underscore-dangle,func-names */
-import RC4, { POLL_SIZE } from './rc4';
+import RC4, { POOL_SIZE } from './rc4';
 
-const pool = Array(POLL_SIZE).fill(0);
 
+// random number pool
+const pool = Array(POOL_SIZE).fill(0);
 // Initialize the pool with junk
 function randomPool() {
   if (window && window.crypto && window.crypto.getRandomValues) {
     // Extract entropy (2048 bits) from RNG if available
-    const r = new Uint32Array(POLL_SIZE);
+    const r = new Uint32Array(POOL_SIZE);
     window.crypto.getRandomValues(r);
 
     r.forEach((value, index) => {
@@ -28,7 +29,7 @@ const onMouseMoveListener = function (event) {
   }
 
   // remove listener
-  if (this.__r >= POLL_SIZE) {
+  if (this.__r >= POOL_SIZE) {
     if (window && window.removeEventListener) {
       window.removeEventListener('mousemove', onMouseMoveListener, false);
     } else if (window && window.detachEvent) {
