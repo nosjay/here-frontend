@@ -61,6 +61,10 @@ export default class SecureRandom {
     pool.fill(0);
   }
 
+  /**
+   * @param {number} size
+   * @return {number[]}
+   */
   nextBytes(size) {
     return Array(size).fill(0).map(() => this.state.next());
   }

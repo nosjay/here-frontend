@@ -5,6 +5,9 @@ export const POOL_SIZE = 256;
 
 // RC4 cipher
 export default class RC4 {
+  /**
+   * @param {number[]} key
+   */
   constructor(key) {
     this.i = 0;
     this.j = 0;
@@ -17,6 +20,9 @@ export default class RC4 {
     });
   }
 
+  /**
+   * @return {number}
+   */
   next() {
     this.i = (this.i + 1) & 0xff;
     this.j = (this.j + this.s[this.i]) & 0xff;
