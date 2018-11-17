@@ -15,6 +15,10 @@ for (let i = 0; i < ignore.length; ++i) {
 
 // Base64 utility
 export default class Base64 {
+  /**
+   * @param {string} b64string
+   * @return {Array}
+   */
   static decode(b64string) {
     const out = [];
 
@@ -62,14 +66,19 @@ export default class Base64 {
     }
 
     // eslint-disable-next-line default-case
-    switch (b64unitCount) {
-      case 1:
+    switch (b64unitCount) { // ^(valid bits), .(pad bits), ?(miss bits)
+      case 1: // 1Unit completed
+        // xxxxxx, 000000
+        // ^^^^^^  ??....
         throw new Error('Base64 encoding incomplete: at least 2 bits missing');
-      case 2:
+      case 2: // 2Units completed
         // xxxxxx, xxxxxx, 000000
         // ^^^^^^  ^^....  ......
         out.push(bits >> 10); break;
-      case 3:
+      case 3: // 3Units completed
+        // xxxxxx, xxxxxx, xxxxxx, xxxxxx
+        // ^^^^^^  ^^
+        //           ^^^^  ^^^^..  ......
         out.push((bits >> 16) & 0xff);
         out.push((bits >> 8) & 0xff);
         break;
