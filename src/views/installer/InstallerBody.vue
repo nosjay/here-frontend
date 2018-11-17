@@ -78,6 +78,7 @@
 
 <script>
 import Emitter from '../../utils/emitter';
+import Encryption from '../../utils/encryption/encryption';
 
 
 export default {
@@ -151,6 +152,11 @@ export default {
         this.dispatch('InstallGuide', 'submitted');
       }
     },
+  },
+  mounted() {
+    const encryption = new Encryption(this.$store.state.security.publicKey);
+    console.log(encryption);
+    console.log(encryption.encrypt('abcdefg'));
   },
 };
 </script>
