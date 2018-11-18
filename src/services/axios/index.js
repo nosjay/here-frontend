@@ -8,7 +8,6 @@ import Encryption from '../../utils/encryption';
 
 
 const instance = axios.create(DEFAULT_AXIOS_CONFIG);
-
 instance.interceptors.request.use(onRequestSuccess, onRequestFail);
 instance.interceptors.response.use(onResponseSuccess, onResponseFail);
 
@@ -22,6 +21,11 @@ class ResponseGetter {
     this.raiseError = false;
   }
 
+  /**
+   * @param {*|null} defaultValue
+   * @param {boolean} raiseError
+   * @return {Promise<ResponseGetter>}
+   */
   config(defaultValue = null, raiseError = false) {
     this.defaultValue = defaultValue;
     this.raiseError = raiseError;
@@ -35,6 +39,11 @@ class ResponseGetter {
     });
   }
 
+  /**
+   * @param {string} paths
+   * @param {*|null} defaultValue
+   * @return {*|null}
+   */
   get(paths, defaultValue = this.defaultValue) {
     if (this.response === null) {
       return defaultValue;
@@ -51,11 +60,19 @@ class ResponseGetter {
     return value;
   }
 
+  /**
+   * @param {object} response
+   * @return {ResponseGetter}
+   */
   setResponse(response) {
     this.response = response;
     return this;
   }
 
+  /**
+   * @param {object} error
+   * @return {ResponseGetter}
+   */
   setError(error) {
     this.error = error;
     return this;
@@ -68,17 +85,21 @@ class ActionProvider {
     this.axios = axiosInstance;
   }
 
-  init(force = false) {
-    let params = {};
-    if (force) {
-      params = { ...params, force };
-    }
-
-    return this.request('get', '/init', {
-      params,
-    });
+  /**
+   * @return {Promise<ResponseGetter>}
+   */
+  init() {
+    return this.request('get', '/init');
   }
 
+  /**
+   * @param {string} title
+   * @param {string} description
+   * @param {string} email
+   * @param {string} username
+   * @param {string} password
+   * @return {Promise<ResponseGetter>}
+   */
   blogger({
     title, description, email, username, password,
   }) {
@@ -88,6 +109,11 @@ class ActionProvider {
     })));
   }
 
+  /**
+   * @param {string} method
+   * @param {*} args
+   * @return {Promise<ResponseGetter>}
+   */
   request(method, ...args) {
     return this.axios[method](...args)
       .then(res => (new ResponseGetter()).setResponse(res))
@@ -99,6 +125,5 @@ class ActionProvider {
   }
 }
 
-const provider = new ActionProvider(instance);
-
-export default provider;
+// eslint-disable-next-line import/prefer-default-export
+export const provider = new ActionProvider(instance);

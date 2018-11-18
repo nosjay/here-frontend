@@ -1,13 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { GLOBAL_VARIABLES } from '../configs';
-import provider from '../services/axios';
+import { provider } from '../services/axios';
 
 
 GLOBAL_VARIABLES.$Provider = provider;
 
 export default {
-  // eslint-disable-next-line
+  /**
+   * @param {object} Vue
+   * @param {object} options
+   */
   install: (Vue, options) => {
-    // eslint-disable-next-line
     Vue.prototype.$Provider = provider;
   },
 };

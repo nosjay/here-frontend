@@ -78,7 +78,6 @@
 
 <script>
 import Emitter from '../../utils/emitter';
-import Encryption from '../../utils/encryption/encryption';
 
 
 export default {
@@ -128,7 +127,7 @@ export default {
   methods: {
     submitHandler() {
       this.$refs.form.validate((valid) => {
-        if (valid || true) {
+        if (valid) {
           this.submitStatus = true;
           this.$Provider.blogger(this.registerForm).then(res => res.config(null, true))
             .then((getter) => {
@@ -152,11 +151,6 @@ export default {
         this.dispatch('InstallGuide', 'submitted');
       }
     },
-  },
-  mounted() {
-    const encryption = new Encryption(this.$store.state.security.publicKey);
-    console.log(encryption);
-    console.log(encryption.encrypt('abcdefg'));
   },
 };
 </script>
