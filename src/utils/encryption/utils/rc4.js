@@ -9,8 +9,20 @@ export default class RC4 {
    * @param {number[]} key
    */
   constructor(key) {
+    /**
+     * @private
+     * @type {number}
+     */
     this.i = 0;
+    /**
+     * @private
+     * @type {number}
+     */
     this.j = 0;
+    /**
+     * @private
+     * @type {number[]}
+     */
     this.s = [...Array(POOL_SIZE).keys()];
 
     let j = 0;
@@ -21,6 +33,7 @@ export default class RC4 {
   }
 
   /**
+   * @public
    * @return {number}
    */
   next() {

@@ -1,5 +1,7 @@
 /* eslint-disable no-bitwise,no-plusplus */
 // Contains only some of the parts that are useful for RSA encryption
+import { isNotNull } from '../utils/utils';
+
 const hexDigits = '0123456789ABCDEF';
 const byte2hex = byte => hexDigits.charAt((byte >> 4) & 0xf) + hexDigits.charAt(byte & 0xf);
 
@@ -14,8 +16,12 @@ class Stream {
     }
   }
 
+  /**
+   * @param {number|*} pos
+   * @return {number}
+   */
   get(pos) {
-    const validPos = pos !== undefined ? pos : this.pos++;
+    const validPos = isNotNull(pos) ? pos : this.pos++;
     if (validPos >= this.enc.length) {
       throw new Error(`Requesting byte offset ${pos} on a stream of length ${this.enc.length}`);
     }
@@ -44,14 +50,23 @@ class ASN1Tag {
     this.tagNumber = buf & 0x1f;
   }
 
+  /**
+   * @return {boolean}
+   */
   isUniversal() {
     return this.tagClass === 0;
   }
 
+  /**
+   * @return {boolean}
+   */
   isBitString() {
     return this.tagNumber === 0x03;
   }
 
+  /**
+   * @return {boolean}
+   */
   isOctetString() {
     return this.tagNumber === 0x04;
   }
@@ -80,6 +95,9 @@ export default class ASN1 {
     this.sub = sub;
   }
 
+  /**
+   * @return {string}
+   */
   getHexStringValue() {
     const hexString = this.toHexString();
     const offset = this.header * 2; // byte2hex after
@@ -150,7 +168,7 @@ export default class ASN1 {
    * @returns {number}
    */
   static decodeLength(stream) {
-    let buf = stream.get();
+    let buf = stream.get(null);
     const len = buf & 0x7f;
     if (len === buf) {
       return len;
@@ -158,7 +176,7 @@ export default class ASN1 {
 
     buf = 0;
     for (let i = 0; i < len; ++i) {
-      buf = (buf << 8) | stream.get();
+      buf = (buf << 8) | stream.get(null);
     }
     return buf;
   }

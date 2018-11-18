@@ -58,7 +58,7 @@ function am2(self, i, x, w, j, c, n) {
     const h = self.b[i++] >> 15;
     const m = (xh * l) + (h * xl);
 
-    l = (xl * l) + ((m & 0x7fff) << 15) + w[j] + (c & 0x3fffffff);
+    l = (xl * l) + ((m & 0x7fff) << 15) + w.b[j] + (c & 0x3fffffff);
     c = (l >>> 30) + (m >>> 15) + (xh * h) + (c >>> 30);
     w.b[j++] = l & 0x3fffffff;
   }
@@ -86,7 +86,7 @@ function am3(self, i, x, w, j, c, n) {
     const h = self.b[i++] >> 14;
     const m = (xh * l) + (h * xl);
 
-    l = (xl * l) + ((m & 0x3fff) << 14) + w[j] + c;
+    l = (xl * l) + ((m & 0x3fff) << 14) + w.b[j] + c;
     c = (l >> 28) + (m >> 14) + (xh * h);
     w.b[j++] = l & 0xfffffff;
   }

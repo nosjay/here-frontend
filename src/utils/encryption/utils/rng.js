@@ -57,6 +57,10 @@ if (window && window.addEventListener) {
 // Random number generator
 export default class SecureRandom {
   constructor() {
+    /**
+     * @private
+     * @type {RC4}
+     */
     this.state = new RC4(randomPool());
     pool.fill(0);
   }

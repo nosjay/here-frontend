@@ -2,12 +2,12 @@
 /* eslint-disable no-param-reassign,no-continue,no-use-before-define */
 
 // Javascript BN(BigNumber) Library
-import { intAt, int2char } from './utils/radix';
-import { isNull, isNotNull, nbits } from './utils/utils';
+import { intAt, int2char } from '../utils/radix';
+import { isNull, isNotNull, nbits } from '../utils/utils';
 import {
   BITS_PER_DIGIT, DIGIT_MAX, DIGIT_VALUE, FASTEST_AM_FUNC,
   FLOW_VALUE, FLOW_1, FLOW_2,
-} from './utils/engine';
+} from '../utils/engine';
 
 
 /**
@@ -141,6 +141,10 @@ class Montgomery {
 }
 
 export default class BigInteger {
+  /**
+   * @param {Array|string|*} a
+   * @param {number|null|*} b
+   */
   constructor(a, b) {
     this.t = 0;
     this.s = 0;
@@ -173,7 +177,7 @@ export default class BigInteger {
   }
 
   /**
-   * @param {string} hex
+   * @param {string|Array} hex
    * @param {number} radix
    */
   fromString(hex, radix) {
@@ -231,6 +235,9 @@ export default class BigInteger {
     }
   }
 
+  /**
+   * @return {number}
+   */
   bitLength() {
     if (this.t <= 0) {
       return 0;
@@ -496,14 +503,14 @@ export default class BigInteger {
       return r;
     }
 
-    const yt = (y0 * (1 << FLOW_1)) + (ys > 1 ? (y.b[ys - 2] >> FLOW_2) : 0);
+    const yt = (y0 * (1 << FLOW_1)) + ((ys > 1) ? y.b[ys - 2] >> FLOW_2 : 0);
     const d1 = FLOW_VALUE / yt;
     const d2 = (1 << FLOW_1) / yt;
     const e = 1 << FLOW_2;
     let i = r.t;
     let j = i - ys;
     const t = q === null ? BigInteger.newBigIntegerFromNull() : q;
-    t.dlShiftTo(j, t);
+    y.dlShiftTo(j, t);
     if (r.compareTo(t) >= 0) {
       r.b[r.t++] = 1;
       r.subTo(t, r);
@@ -521,6 +528,7 @@ export default class BigInteger {
       if (r.b[--i] !== y0) {
         qd = Math.floor((r.b[i] * d1) + ((r.b[i - 1] + e) * d2));
       }
+
       r.b[i] += y.am(0, qd, r, j, 0, ys);
       if (r.b[i] < qd) {
         y.dlShiftTo(j, t);
@@ -718,10 +726,10 @@ export default class BigInteger {
       case 16: k = 4; break;
       case 32: k = 5; break;
     }
+    let r = '';
 
     const km = (1 << k) - 1;
     let m = false;
-    let r = '';
     let i = this.t;
     let p = BITS_PER_DIGIT - ((i * BITS_PER_DIGIT) % k);
     while (i-- > 0) {
@@ -731,7 +739,7 @@ export default class BigInteger {
         r = int2char(d);
       }
 
-      while (i > 0) {
+      while (i >= 0) {
         if (p < k) {
           d = (this.b[i] & ((1 << p) - 1)) << (k - p);
 
@@ -759,6 +767,9 @@ export default class BigInteger {
     return m ? r : '0';
   }
 
+  /**
+   * @return {BigInteger}
+   */
   static get ONE() {
     if (!BigInteger.__ONE) {
       BigInteger.__ONE = BigInteger.newBigIntegerFromInt(1);
@@ -766,6 +777,9 @@ export default class BigInteger {
     return BigInteger.__ONE;
   }
 
+  /**
+   * @return {BigInteger}
+   */
   static get ZERO() {
     if (!BigInteger.__ZERO) {
       BigInteger.__ZERO = BigInteger.newBigIntegerFromInt(0);
@@ -773,14 +787,21 @@ export default class BigInteger {
     return BigInteger.__ZERO;
   }
 
-  // return BigInteger initialized to value
+  /**
+   * return BigInteger initialized to value
+   * @param {number} n
+   * @return {BigInteger}
+   */
   static newBigIntegerFromInt(n) {
-    const bn = new BigInteger();
+    const bn = new BigInteger(null, null);
     bn.fromInt(n);
     return bn;
   }
 
+  /**
+   * @return {BigInteger}
+   */
   static newBigIntegerFromNull() {
-    return new BigInteger(null);
+    return new BigInteger(null, null);
   }
 }

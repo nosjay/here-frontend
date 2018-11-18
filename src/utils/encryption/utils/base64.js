@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus,no-continue,no-bitwise,no-multi-spaces */
 const b64map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 const ignore = '= \f\n\n\t\u00A0\u2028\u2029';
+const b64pad = '=';
 
 // parse decoder
 const decoder = Object.create(null);
@@ -85,6 +86,32 @@ export default class Base64 {
     }
 
     return out;
+  }
+
+  /**
+   * @param {string} hexString
+   * @return {string}
+   */
+  static hex2b64(hexString) {
+    let i = 0;
+    let ret = '';
+    for (; i + 3 <= hexString.length; i += 3) {
+      const char = parseInt(hexString.substring(i, i + 3), 16);
+      ret += b64map.charAt(char >> 6) + b64map.charAt(char & 63);
+    }
+
+    if (i + 1 === hexString.length) {
+      const char = parseInt(hexString.substring(i, i + 1), 16);
+      ret += b64map.charAt(char << 2);
+    } else if (i + 2 === hexString.length) {
+      const char = parseInt(hexString.substring(i, i + 2), 16);
+      ret += b64map.charAt(char >> 2) + b64map.charAt((char & 3) << 4);
+    }
+
+    while ((ret.length & 3) > 0) {
+      ret += b64pad;
+    }
+    return ret;
   }
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-bitwise,no-plusplus */
 import BigInteger from './bn';
-import SecureRandom from './rng';
+import SecureRandom from '../utils/rng';
 
 
 /**
@@ -16,11 +16,11 @@ const pkcs1pad2 = (text, length) => {
 
   let padLength = length;
   const byteArray = [];
-  for (let i = text.length - 1; i > 0 && padLength > 0;) {
+  for (let i = text.length - 1; i >= 0 && padLength > 0;) {
     const char = text.charCodeAt(i--);
     if (char < 128) { // encode using utf-8
       byteArray[--padLength] = char;
-    } else if (char > 128 && char < 2048) {
+    } else if (char > 127 && char < 2048) {
       byteArray[--padLength] = (char & 63) | 128;
       byteArray[--padLength] = (char >> 6) | 192;
     } else {
@@ -52,6 +52,10 @@ export default class RSAKey {
     this.e = 0;
   }
 
+  /**
+   * @param {string} n
+   * @param {string} e
+   */
   setPublicKey(n, e) {
     if (n !== null && e !== null && n.length > 0 && e.length > 0) {
       this.n = new BigInteger(n, 16);
@@ -61,6 +65,10 @@ export default class RSAKey {
     }
   }
 
+  /**
+   * @param {string} text
+   * @return {string|null}
+   */
   encrypt(text) {
     const padInteger = pkcs1pad2(text, (this.n.bitLength() + 7) >> 3);
     if (padInteger === null) {
@@ -71,7 +79,6 @@ export default class RSAKey {
     if (encrypted === null) {
       return null;
     }
-    console.log(encrypted);
 
     const hexString = encrypted.toString(16);
     if ((hexString.length & 1) === 0) {
