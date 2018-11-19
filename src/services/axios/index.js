@@ -104,7 +104,7 @@ class ActionProvider {
     title, description, email, username, password,
   }) {
     const encryption = new Encryption(GLOBAL_VARIABLES.$Store.state.security.publicKey);
-    return this.request('put', '/blogger', encryption.encrypt(JSON.stringify({
+    return this.request('put', '/blogger', encryption.encryptWithAutoSplit(JSON.stringify({
       title, description, email, username, password,
     })));
   }

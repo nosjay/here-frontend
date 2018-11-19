@@ -3,7 +3,7 @@
 
 // Javascript BN(BigNumber) Library
 import { intAt, int2char } from '../utils/radix';
-import { isNull, isNotNull, nbits } from '../utils/utils';
+import { isNull, isNotNull, nBits } from '../utils/utils';
 import {
   BITS_PER_DIGIT, DIGIT_MAX, DIGIT_VALUE, FASTEST_AM_FUNC,
   FLOW_VALUE, FLOW_1, FLOW_2,
@@ -242,7 +242,7 @@ export default class BigInteger {
     if (this.t <= 0) {
       return 0;
     }
-    return (BITS_PER_DIGIT * (this.t - 1)) + nbits(this.b[this.t - 1] ^ (this.s & DIGIT_MAX));
+    return (BITS_PER_DIGIT * (this.t - 1)) + nBits(this.b[this.t - 1] ^ (this.s & DIGIT_MAX));
   }
 
   /**
@@ -288,7 +288,7 @@ export default class BigInteger {
     const g = z.convert(this);
     g.copyTo(r1);
 
-    for (let i = nbits(e) - 2; i >= 0; --i) {
+    for (let i = nBits(e) - 2; i >= 0; --i) {
       z.sqrTo(r1, r2);
       if ((e & (1 << i)) > 0) {
         z.mulTo(r2, g, r1);
@@ -488,7 +488,7 @@ export default class BigInteger {
     const ts = this.s;
     const ms = m.s;
 
-    const nsh = BITS_PER_DIGIT - nbits(pm.b[pm.t - 1]);
+    const nsh = BITS_PER_DIGIT - nBits(pm.b[pm.t - 1]);
     if (nsh > 0) {
       pm.lShiftTo(nsh, y);
       pt.lShiftTo(nsh, r);

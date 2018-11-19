@@ -4,14 +4,15 @@ import SecureRandom from '../utils/rng';
 
 
 /**
+ *
  * @param {string} text
  * @param {number} length
- * @return {string|BigInteger|null}
+ * @throws Error
+ * @return {BigInteger}
  */
 const pkcs1pad2 = (text, length) => {
   if (length < text.length + 11) {
-    console.error('Message too long for RSA');
-    return null;
+    throw new Error('Message too long for RSA');
   }
 
   let padLength = length;
@@ -42,17 +43,34 @@ const pkcs1pad2 = (text, length) => {
   }
   byteArray[--padLength] = 2;
   byteArray[--padLength] = 0;
-  return new BigInteger(byteArray);
+  return new BigInteger(byteArray, null);
 };
 
 // "empty" RSA key constructor
 export default class RSAKey {
   constructor() {
+    /**
+     * @private
+     * @type {BigInteger}
+     */
     this.n = null;
+    /**
+     * @private
+     * @type {number}
+     */
     this.e = 0;
   }
 
   /**
+   * @public
+   * @return {number}
+   */
+  get maxMessageLength() {
+    return ((this.n.bitLength() + 7) >> 3) - 11;
+  }
+
+  /**
+   * @public
    * @param {string} n
    * @param {string} e
    */
@@ -66,18 +84,15 @@ export default class RSAKey {
   }
 
   /**
+   * @public
    * @param {string} text
    * @return {string|null}
    */
   encrypt(text) {
     const padInteger = pkcs1pad2(text, (this.n.bitLength() + 7) >> 3);
-    if (padInteger === null) {
-      return null;
-    }
-
     const encrypted = padInteger.modPowInt(this.e, this.n);
     if (encrypted === null) {
-      return null;
+      throw new Error('encryption error occurs');
     }
 
     const hexString = encrypted.toString(16);
