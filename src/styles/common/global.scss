@@ -1,17 +1,21 @@
 @import '../definitions';
-
+@import '../mixins/scrollerbar';
 
 * {
   box-sizing: border-box;
 }
 
 html, body {
-  color: $text-color;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  @include scroller-bar;
+}
+
 body {
-  background: #f1f1f1;
+  color: $text-color;
+  background: $light-background-color;
   box-sizing: border-box;
 }

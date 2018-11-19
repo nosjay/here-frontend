@@ -1,0 +1,24 @@
+// common utils
+@import '../definitions';
+
+
+// set container to full page
+@mixin full-page {
+  min-height: 100vh;
+}
+
+// add shadow to container
+@mixin box-shadow(
+  $x-offset: 0,
+  $y-offset: 0,
+  $blur-radius: 6px,
+  $spread-radius: 2px,
+  $shadow-color: rgba($dark-background-color, .1)
+) {
+  box-shadow: $x-offset $y-offset $blur-radius $spread-radius $shadow-color;
+}
+
+// add shadows to container
+@mixin box-shadows($shadow...) {
+  box-shadow: $shadow;
+}

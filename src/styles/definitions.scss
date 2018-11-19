@@ -1,4 +1,7 @@
-// Color
+// theme
+@import './theme/default';
+
+
 $primary-color          : #2d8cf0;
 $info-color             : #2db7f5;
 $success-color          : #19be6b;
@@ -35,9 +38,9 @@ $cursor-disabled        : not-allowed;
 
 // Layout and Grid
 $grid-columns                : 24;
-$layout-main-background      : #f1f1f1;
+$layout-main-background      : $light-background-color;
 $layout-main-padding         : 20px;
-$layout-header-background    : #f5f5f5;
+$layout-header-background    : $white-background-color;
 $layout-header-height        : 64px;
 $layout-header-padding       : 0 20px;
 $layout-footer-padding       : 0 20px;

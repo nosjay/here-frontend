@@ -6,7 +6,7 @@ import inject from './plugins/inject';
 import store from './services/store';
 import App from './App.vue';
 import Components from './components';
-import './styles/index.scss';
+import './styles/style.scss';
 import './services/event';
 
 

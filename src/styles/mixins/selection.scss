@@ -1,0 +1,13 @@
+// selection mixin
+@import '../definitions';
+
+
+@mixin selection(
+  $background: $selection-background,
+  $foreground: $selection-foreground
+) {
+  &::selection, &::-moz-selection {
+    background: $background;
+    color: $foreground;
+  }
+}

@@ -1,8 +1,8 @@
 <template>
   <Steps :current="currentStep" :status="currentStatus">
-    <Step title="Blog" desc="Title and more" bg-color="#f5f5f5"></Step>
-    <Step title="User" desc="Email, password and more" bg-color="#f5f5f5"></Step>
-    <Step title="Completed" desc="Go to the home page" bg-color="#f5f5f5"></Step>
+    <Step title="Blog" desc="Title and more"></Step>
+    <Step title="User" desc="Email, password and more"></Step>
+    <Step title="Completed" desc="Go to the home page"></Step>
   </Steps>
 </template>
 

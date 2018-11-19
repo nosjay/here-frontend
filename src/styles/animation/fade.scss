@@ -1,4 +1,6 @@
-// noinspection ALL
+@import 'base';
+
+
 @mixin fade-animation($name, $animation-name) {
   @include make-animation($name, $animation-name);
 
@@ -11,9 +13,10 @@
   }
 }
 
-@include fade-animation(fade, 'hFade');
+@include fade-animation(fade, 'h-Fade');
 
-@keyframes hFadeIn {
+
+@keyframes h-FadeIn {
   from {
     opacity: 0;
   }
@@ -22,7 +25,7 @@
   }
 }
 
-@keyframes hFadeOut {
+@keyframes h-FadeOut {
   from {
     opacity: 1;
   }
