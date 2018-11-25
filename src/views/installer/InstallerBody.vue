@@ -141,7 +141,7 @@ export default {
                 this.$router.replace({ name: 'index-home' });
               }, 1500);
             }, (error) => {
-              console.log(error);
+              this.submitStatus = false;
               this.$Bus.$emit('global.dialog', {
                 type: 'error',
                 message: error,
