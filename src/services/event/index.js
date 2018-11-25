@@ -16,13 +16,8 @@ GLOBAL_VARIABLES.$Bus.$on('page.ready', () => {
   GLOBAL_VARIABLES.$Loading.finish();
 });
 
-// page error event
-GLOBAL_VARIABLES.$Bus.$on('page.error', () => {
-  GLOBAL_VARIABLES.$Loading.error();
-});
-
-// error dialog
-GLOBAL_VARIABLES.$Bus.$on('dialog.error', (error) => {
+// global dialog
+GLOBAL_VARIABLES.$Bus.$on('global.dialog', ({ type, message }) => {
   // eslint-disable-next-line
-  console.log(error);
+  console.log({ type, message });
 });

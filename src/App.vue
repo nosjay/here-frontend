@@ -23,13 +23,15 @@ export default {
       this.loading = false;
     };
 
-    this.$Provider.init().then(res => res.config(null, true))
+    this.$Provider.init()
       .then((getter) => {
+        // encryption key and request mask value
         this.$store.commit(SET_SECURITY_MUTATION, {
           publicKey: getter.get('security.key'),
           requestMask: getter.get('security.mask'),
         });
 
+        // check author registered
         if (!getter.get('author')) {
           // @TODO cannot get route-name from router and query will lost, because using lazy-load
           this.$router.replace({ name: 'installer', query: this.$route.query }, hideLoading, hideLoading);

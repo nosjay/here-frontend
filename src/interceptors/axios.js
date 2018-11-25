@@ -4,7 +4,10 @@ import RequestSignature from '../utils/request_token';
 
 const signer = new RequestSignature();
 
-
+/**
+ * @param {AxiosRequestConfig} request
+ * @return {AxiosRequestConfig}
+ */
 export function onRequestSuccess(request) {
   // sign backend request
   request.headers['X-Backend-Token'] = `h-${signer.sign()}`;
@@ -14,27 +17,39 @@ export function onRequestSuccess(request) {
   return request;
 }
 
+/**
+ * @param {string} reason
+ * @return {Promise<string>}
+ */
 export function onRequestFail(reason) {
   return Promise.reject(reason);
 }
 
+/**
+ * @param {AxiosResponse} response
+ * @return {Promise<object>|{data, extra}}
+ */
 export function onResponseSuccess(response) {
   if (typeof response.data === 'string') {
-    return Promise.reject(new Error('server internal error'));
+    return Promise.reject(new Error('Server Internal Error'));
   }
 
-  const responseData = response.data;
-  const { status } = responseData;
+  const {
+    status, message, data, extra,
+  } = response.data;
 
   switch (status) {
     case 0:
-      return responseData.data;
+      return { data, extra };
     default:
-      GLOBAL_VARIABLES.$Bus.$emit('global.$dialog.error', responseData.message);
-      return Promise.reject(responseData);
+      return Promise.reject(message);
   }
 }
 
+/**
+ * @param {string} reason
+ * @return {Promise<string>}
+ */
 export function onResponseFail(reason) {
   return Promise.reject(reason);
 }

@@ -50,9 +50,9 @@
           <!-- User Password -->
           <FormItem label="Password" label-for="form__password" prop="password">
             <Input
+              type="password"
               control-id="form__password"
               v-model="registerForm.password"
-              type="password"
               placeholder="Please enter the blogger's password for login"
             />
           </FormItem>
@@ -129,11 +129,23 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.submitStatus = true;
-          this.$Provider.blogger(this.registerForm).then(res => res.config(null, true))
+          this.$Provider.author(this.registerForm)
             .then((getter) => {
-              console.log(getter);
+              // welcome message
+              this.$Bus.$emit('global.dialog', {
+                type: 'success',
+                message: getter.get('welcome'),
+              });
+              // waiting moment and go to homepage
+              setTimeout(() => {
+                this.$router.replace({ name: 'index-home' });
+              }, 1500);
             }, (error) => {
-              console.log((error));
+              console.log(error);
+              this.$Bus.$emit('global.dialog', {
+                type: 'error',
+                message: error,
+              });
             });
         }
       });
