@@ -2,6 +2,7 @@
 import { GLOBAL_VARIABLES } from '../configs';
 import { provider } from '../services/axios';
 
+
 /**
  * @type {ActionCollection}
  */

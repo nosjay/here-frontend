@@ -49,6 +49,9 @@ function cleanLoadingBarTimer() {
 }
 
 export default {
+  /**
+   * @param {boolean} autoIncrementPercent
+   */
   start(autoIncrementPercent = true) {
     if (loadingBarTimer === null) {
       let percent = 0;
@@ -75,6 +78,9 @@ export default {
       }
     }
   },
+  /**
+   * @param {object} options
+   */
   config(options) {
     if ('color' in options) {
       loadingBarSuccessColor = options.color;
@@ -86,6 +92,10 @@ export default {
       loadingBarHeight = options.height;
     }
   },
+  /**
+   * @param {number} percent
+   * @param {boolean} autoFinish
+   */
   update(percent, autoFinish = true) {
     cleanLoadingBarTimer();
     updateLoadingBar({

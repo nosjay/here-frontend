@@ -13,6 +13,7 @@ import Layout from './Layout';
 import Loading from './Loading';
 import LoadingBar from './LoadingBar';
 import Main from './Main';
+import Message from './Message';
 import Row from './Row';
 import Step from './Step';
 import Steps from './Steps';
@@ -32,6 +33,7 @@ const components = {
   Loading,
   LoadingBar,
   Main,
+  Message,
   Row,
   Step,
   Steps,
@@ -46,5 +48,6 @@ export default {
 
     GLOBAL_VARIABLES.$Loading = LoadingBar;
     Vue.prototype.$Loading = LoadingBar; // eslint-disable-line no-param-reassign
+    Vue.prototype.$Message = Message;
   },
 };
