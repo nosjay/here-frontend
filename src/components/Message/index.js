@@ -1,7 +1,14 @@
 import Message from './message';
 
 
+let messageUniqueIndex = 0;
+/**
+ * @type {*|null|Message}
+ */
 let messageInstance = null;
+/**
+ * @type {{top: number, onClose: Function, duration: number}}
+ */
 const defaults = {
   top: 24,
   onClose: () => {},
@@ -13,10 +20,9 @@ const defaults = {
  */
 function getMessageInstance() {
   if (!messageInstance) {
+    // create new Message instance
     messageInstance = Message.newInstance({
-      styles: {
-        top: `${defaults.top}px`,
-      },
+      top: `${defaults.top}px`,
     });
   }
   return messageInstance;
@@ -28,16 +34,22 @@ function getMessageInstance() {
  * @param {function} onClose
  */
 function notice(content, duration = defaults.duration, onClose = defaults.onClose) {
-  const instance = getMessageInstance();
-  instance.notice({
+  // eslint-disable-next-line no-plusplus
+  const name = `h_message_${messageUniqueIndex++}`;
+  const message = getMessageInstance();
+
+  // create new Notice instance into Message container
+  message.notice({
+    name,
     duration,
     onClose,
-    content: `<span>${content}</span>`,
+    content: `<div><span>${content}</span></div>`,
   });
 
-  return (() => () => {
-    instance.close('');
-  })();
+  // close handler
+  return () => {
+    message.close(name);
+  };
 }
 
 
@@ -77,7 +89,9 @@ export default {
    */
   message(type, options) {
     let collection = options;
-    if (typeof options === 'string') {
+    if (!options) {
+      throw new Error('message content not found');
+    } else if (typeof options === 'string') {
       collection = {
         content: options,
       };
@@ -96,9 +110,14 @@ export default {
       defaults.duration = options.duration;
     }
   },
+  /**
+   * destroy all messages
+   */
   destroy() {
-    const instance = getMessageInstance();
-    messageInstance = null;
-    instance.destroy('ivu-message');
+    if (messageInstance !== null) {
+      const instance = getMessageInstance();
+      messageInstance = null;
+      instance.destroy();
+    }
   },
 };

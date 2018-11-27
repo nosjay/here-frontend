@@ -13,6 +13,10 @@ const noticeBlockClass = 'h-notice';
 export default {
   name: 'Notice',
   props: {
+    name: {
+      type: String,
+      required: true,
+    },
     content: {
       type: String,
       required: true,
@@ -54,6 +58,7 @@ export default {
       if (typeof this.onClose === 'function') {
         this.onClose();
       }
+      this.$parent.closeNotice(this.name);
     },
     enterHandler() {
     },

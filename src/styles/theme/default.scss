@@ -9,6 +9,10 @@ $black-background-color   : black !default;
 $font-color               : #26425f !default;
 
 
+// components size
+$base-font-size           : 14px !default;
+
+
 // scroller-bar
 $scroller-bar-width       : 8px !default;
 $scroller-bar-height      : $scroller-bar-width !default;
@@ -18,3 +22,7 @@ $scroller-bar-background  : $black-background-color !default;
 // selection
 $selection-background     : #308dfd !default;
 $selection-foreground     : $white-background-color !default;
+
+
+// z-index
+$message-z-index          : 999 !default;

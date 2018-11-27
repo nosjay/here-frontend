@@ -2,6 +2,10 @@ import Vue from 'vue';
 import Message from './Message.vue';
 
 
+/**
+ * @param properties
+ * @return {*}
+ */
 Message.newInstance = (properties) => {
   const props = properties || {};
 

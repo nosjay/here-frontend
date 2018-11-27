@@ -1,0 +1,18 @@
+@import '../definitions';
+
+
+.h-message {
+  font-size: $base-font-size;
+  position: fixed;
+  left: 0;
+  top: 45px;
+  width: 100%;
+  pointer-events: none;
+  z-index: $message-z-index;
+}
+
+.h-message__notice {
+  text-align: center;
+  padding: 8px;
+  transition: all $transition-time ease-in-out;
+}
