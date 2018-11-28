@@ -47,9 +47,16 @@ export function onResponseSuccess(response) {
 }
 
 /**
- * @param {string} reason
+ * @param {AxiosError} error
  * @return {Promise<string>}
  */
-export function onResponseFail(reason) {
-  return Promise.reject(reason);
+export function onResponseFail(error) {
+  const { response, message } = error;
+
+  if (typeof response.data === 'object') {
+    if (response.data.message) {
+      return Promise.reject(response.data.message);
+    }
+  }
+  return Promise.reject(message);
 }

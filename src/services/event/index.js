@@ -18,6 +18,5 @@ GLOBAL_VARIABLES.$Bus.$on('page.ready', () => {
 
 // global dialog
 GLOBAL_VARIABLES.$Bus.$on('global.dialog', ({ type, message }) => {
-  // eslint-disable-next-line
-  console.log({ type, message });
+  GLOBAL_VARIABLES.$Message.message(type, message);
 });

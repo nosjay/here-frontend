@@ -132,20 +132,14 @@ export default {
           this.$Provider.author(this.registerForm)
             .then((getter) => {
               // welcome message
-              this.$Bus.$emit('global.dialog', {
-                type: 'success',
-                message: getter.get('welcome'),
-              });
+              this.$Message.success(getter.get('welcome'));
               // waiting moment and go to homepage
               setTimeout(() => {
                 this.$router.replace({ name: 'index-home' });
               }, 1500);
             }, (error) => {
               this.submitStatus = false;
-              this.$Bus.$emit('global.dialog', {
-                type: 'error',
-                message: error,
-              });
+              this.$Message.error(error);
             });
         }
       });

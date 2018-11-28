@@ -7,8 +7,5 @@
 <script>
 export default {
   name: 'Home',
-  mounted() {
-    console.log(this.$Message);
-  },
 };
 </script>

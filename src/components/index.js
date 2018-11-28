@@ -42,14 +42,16 @@ const components = {
 };
 
 export default {
-  install(Vue, options = {}) { // eslint-disable-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
+  install(Vue, options = {}) {
     // register all components
     Object.keys(components).forEach((name) => {
       Vue.component(name, components[name]);
     });
 
     GLOBAL_VARIABLES.$Loading = LoadingBar;
-    Vue.prototype.$Loading = LoadingBar; // eslint-disable-line no-param-reassign
+    Vue.prototype.$Loading = LoadingBar;
+    GLOBAL_VARIABLES.$Message = Message;
     Vue.prototype.$Message = Message;
   },
 };
