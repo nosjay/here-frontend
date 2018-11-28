@@ -15,4 +15,39 @@
   text-align: center;
   padding: 8px;
   transition: all $transition-time ease-in-out;
+
+  &__content {
+    display: inline-block;
+    pointer-events: all;
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    background: $white-background-color;
+    position: relative;
+  }
+}
+
+.h-message__text {
+  font-size: 14px;
+
+  .h-message__marker {
+    margin-right: 4px;
+    vertical-align: middle;
+
+    &--info {
+      color: $info-color;
+    }
+
+    &--warning {
+      color: $warning-color;
+    }
+
+    &--error {
+      color: $error-color;
+    }
+
+    &--success {
+      color: $success-color;
+    }
+  }
 }

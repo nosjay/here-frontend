@@ -6,7 +6,7 @@
       :content="notice.content"
       :duration="notice.duration"
       :onClose="notice.onClose"
-      :blockClassPrefix="messageBlockClass"
+      :block-class-prefix="messageBlockClass"
     ></Notice>
   </div>
 </template>

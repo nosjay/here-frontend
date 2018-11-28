@@ -1,7 +1,7 @@
 <template>
-  <transition name="fade" @enter="enterHandler" @leave="leaveHandler">
+  <transition name="move-up" @enter="enterHandler" @leave="leaveHandler">
     <div :class="blockClasses">
-      <div :class="innerClasses" v-html="content"></div>
+      <div :class="contentClasses" v-html="content"></div>
     </div>
   </transition>
 </template>
@@ -37,8 +37,11 @@ export default {
     blockClasses() {
       return [`${this.blockClassPrefix}__notice`];
     },
-    innerClasses() {
-      return [`${noticeBlockClass}__notice__content`];
+    markerClasses() {
+      return [`${this.blockClassPrefix}__notice__marker`];
+    },
+    contentClasses() {
+      return [`${this.blockClassPrefix}__notice__content`];
     },
   },
   data() {
@@ -60,9 +63,15 @@ export default {
       }
       this.$parent.closeNotice(this.name);
     },
-    enterHandler() {
+    enterHandler(el) {
+      el.style.height = `${el.scrollHeight}px`;
     },
-    leaveHandler() {
+    leaveHandler(el) {
+      if (document.getElementsByClassName('h-message__notice').length !== 1) {
+        el.style.height = 0;
+        el.style.paddingTop = 0;
+        el.style.paddingBottom = 0;
+      }
     },
   },
   mounted() {

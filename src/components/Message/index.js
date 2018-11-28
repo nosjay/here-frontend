@@ -7,6 +7,15 @@ let messageUniqueIndex = 0;
  */
 let messageInstance = null;
 /**
+ * @type {{info: string, warning: string, error: string, success: string}}
+ */
+const typeIcons = {
+  info: 'h-icon__info-circle',
+  warning: 'h-icon__warning-circle',
+  error: 'h-icon__error-circle',
+  success: 'h-icon__success-circle',
+};
+/**
  * @type {{top: number, onClose: Function, duration: number}}
  */
 const defaults = {
@@ -29,11 +38,12 @@ function getMessageInstance() {
 }
 
 /**
+ * @param {string} type
  * @param {string} content
  * @param {number} duration
  * @param {function} onClose
  */
-function notice(content, duration = defaults.duration, onClose = defaults.onClose) {
+function notice(type, content, duration = defaults.duration, onClose = defaults.onClose) {
   // eslint-disable-next-line no-plusplus
   const name = `h_message_${messageUniqueIndex++}`;
   const message = getMessageInstance();
@@ -43,7 +53,12 @@ function notice(content, duration = defaults.duration, onClose = defaults.onClos
     name,
     duration,
     onClose,
-    content: `<div><span>${content}</span></div>`,
+    content: `
+      <div class="h-message__text">
+        <i class="h-message__marker h-icon ${typeIcons[type]} h-message__marker--${type}"></i>
+         <span>${content}</span>
+      </div>
+    `,
   });
 
   // close handler
@@ -96,7 +111,7 @@ export default {
         content: options,
       };
     }
-    return notice(collection.content, collection.duration, collection.onClose);
+    return notice(type, collection.content, collection.duration, collection.onClose);
   },
   /**
    * @param {{top, duration}} options
@@ -117,7 +132,7 @@ export default {
     if (messageInstance !== null) {
       const instance = getMessageInstance();
       messageInstance = null;
-      instance.destroy();
+      instance.destroy('h-message');
     }
   },
 };
