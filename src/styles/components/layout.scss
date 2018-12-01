@@ -2,82 +2,83 @@
 @import '../mixins/common';
 
 
+// layout container
 .h-layout {
+  flex: auto;
   display: flex;
   flex-direction: column;
-  flex: auto;
   background: $layout-main-background;
-
-  &--has-aside {
-    flex-direction: row;
-
-    > .h-layout, > .h-layout__main {
-      overflow-x: hidden;
-    }
-  }
-
-  &--full-page {
-    @include full-page;
-  }
 
   &__header, &__footer {
     flex: 0 0 auto;
   }
+}
 
-  &__header {
-    background: $layout-header-background;
-    padding: $layout-header-padding;
-    height: $layout-header-height;
-    line-height: $layout-header-height;
+// layout has aside
+.h-layout--has-aside {
+  flex-direction: row;
 
-    &--shadow {
-      @include box-shadow;
+  > .h-layout, > .h-layout__main {
+    overflow-x: hidden;
+  }
+}
+
+// full-page attrs
+.h-layout--full-page,
+.h-layout__aside--full-page {
+  @include full-page;
+}
+
+// shadow attrs
+.h-layout__header--shadow,
+.h-layout__aside--shadow {
+  @include box-shadow;
+}
+
+// header of layout
+.h-layout__header {
+  background: $layout-header-background;
+  padding: $layout-header-padding;
+  height: $layout-header-height;
+  line-height: $layout-header-height;
+}
+
+// left aside of layout
+.h-layout__aside {
+  min-width: 0;
+  position: relative;
+  background: $layout-aside-background;
+  transition: width $transition-time $ease-in-out;
+
+  &__children {
+    height: 100%;
+    padding-top: 0.1px;
+    margin-top: -0.1px;
+
+    & > * {
+      overflow: hidden;
     }
   }
+}
 
-  &__aside {
-    transition: width $transition-time $ease-in-out;
-    position: relative;
-    background: $layout-aside-background;
+// main container of layout
+.h-layout__main {
+  flex: auto;
+  padding: $layout-main-padding;
+}
 
-    min-width: 0;
+// footer of layout
+.h-layout__footer {
+  padding: $layout-footer-padding;
+  background: $layout-footer-background;
 
-    &__children {
-      height: 100%;
-      padding-top: 0.1px;
-      margin-top: -0.1px;
-
-      & > * {
-        overflow: hidden;
-      }
-    }
-
-    &--shadow {
-      @include box-shadow;
-    }
-
-    &--full-page {
-      @include full-page;
-    }
+  &--center {
+    text-align: center;
   }
 
-  &__main {
-    flex: auto;
-    padding: $layout-main-padding;
-  }
-
-  &__footer {
-    background: $layout-footer-background;
-    padding: $layout-footer-padding;
-
-    &--center {
-      text-align: center;
-    }
-
-    &--bottom {
-      > .h-layout__main {
-        flex-grow: 1;
-      }
+  &--bottom {
+    > .h-layout__main {
+      flex-grow: 1;
     }
   }
 }

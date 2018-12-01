@@ -12,7 +12,7 @@
   $x-offset: 0,
   $y-offset: 0,
   $blur-radius: 6px,
-  $spread-radius: 2px,
+  $spread-radius: 0,
   $shadow-color: rgba($dark-background-color, .1)
 ) {
   box-shadow: $x-offset $y-offset $blur-radius $spread-radius $shadow-color;
