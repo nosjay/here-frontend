@@ -1,11 +1,15 @@
 <template>
-  <div class="home" style="height: 2000px">
-    aaa
+  <div>
+    footer
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'HomeFooter',
 };
 </script>
+
+<style scoped>
+
+</style>

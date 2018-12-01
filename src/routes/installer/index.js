@@ -5,5 +5,5 @@ export default [{
   name: 'installer',
   path: '/install-guide',
   // component: InstallGuide,
-  component: () => import('../../views/installer/InstallGuide.vue'),
+  component: () => import(/* webpackChunkName: "v-installer" */ '../../views/installer/InstallGuide.vue'),
 }];

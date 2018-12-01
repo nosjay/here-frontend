@@ -48,7 +48,7 @@
   min-width: 0;
   position: relative;
   background: $layout-aside-background;
-  transition: width $transition-time $ease-in-out;
+  transition: width $transition-time $ease-in-out, transform $transition-time linear;
 
   &__children {
     height: 100%;
