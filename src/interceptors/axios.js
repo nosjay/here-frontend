@@ -55,8 +55,12 @@ export function onResponseFail(error) {
 
   if (typeof response.data === 'object') {
     if (response.data.message) {
+      GLOBAL_VARIABLES.$LastError.code = response.data.status;
+      GLOBAL_VARIABLES.$LastError.message = response.data.message;
       return Promise.reject(response.data.message);
     }
   }
+  GLOBAL_VARIABLES.$LastError.code = -1;
+  GLOBAL_VARIABLES.$LastError.message = message;
   return Promise.reject(message);
 }

@@ -6,17 +6,30 @@ import { GLOBAL_VARIABLES } from '../../configs';
 // global event bus
 GLOBAL_VARIABLES.$Bus = new Vue();
 
-// page start loading event
-GLOBAL_VARIABLES.$Bus.$on('page.loading', () => {
-  GLOBAL_VARIABLES.$Loading.start();
-});
+// events callbacks
+const callbacks = {
+  /**
+   * start loadingBar
+   */
+  pageLoading() {
+    GLOBAL_VARIABLES.$Loading.start();
+  },
+  /**
+   * finish loadingBar
+   */
+  pageReady() {
+    GLOBAL_VARIABLES.$Loading.finish();
+  },
+  /**
+   * @param {string} type
+   * @param {string} message
+   */
+  dialog({ type, message }) {
+    GLOBAL_VARIABLES.$Message.message(type, message);
+  },
+};
 
-// page ready event
-GLOBAL_VARIABLES.$Bus.$on('page.ready', () => {
-  GLOBAL_VARIABLES.$Loading.finish();
-});
-
-// global dialog
-GLOBAL_VARIABLES.$Bus.$on('global.dialog', ({ type, message }) => {
-  GLOBAL_VARIABLES.$Message.message(type, message);
+// register callbacks
+Object.keys(callbacks).forEach((name) => {
+  GLOBAL_VARIABLES.$Bus.$on(name.replace(/([A-Z])/g, '.$1').toLowerCase(), callbacks[name]);
 });

@@ -19,5 +19,6 @@ export default {
      */
     Vue.prototype.$Provider = provider;
     Vue.prototype.$Bus = GLOBAL_VARIABLES.$Bus;
+    Vue.prototype.$Global = GLOBAL_VARIABLES;
   },
 };

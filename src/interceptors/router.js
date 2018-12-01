@@ -3,6 +3,7 @@ import { GLOBAL_VARIABLES } from '../configs';
 
 // vue-router global guards
 export function onRouterBeforeEach(to, from, next) {
+  // trigger on page location
   GLOBAL_VARIABLES.$Bus.$emit('page.loading');
 
   next();

@@ -52,8 +52,6 @@ export default {
       currentStepStatus: 'process',
     };
   },
-  methods: {
-  },
   mounted() {
     this.$store.commit(SET_TITLE_MUTATION, {
       title: 'Install Guide',

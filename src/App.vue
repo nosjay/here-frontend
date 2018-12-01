@@ -42,8 +42,7 @@ export default {
           });
         }
       }, (error) => {
-        // eslint-disable-next-line
-        console.log(error);
+        this.$Message.error(error);
       });
   },
 };

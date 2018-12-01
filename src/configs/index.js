@@ -20,7 +20,12 @@ export const DEFAULT_VUEX_CONFIG = {
 };
 
 // global variables
-export const GLOBAL_VARIABLES = {};
+export const GLOBAL_VARIABLES = {
+  $LastError: {
+    code: 0,
+    message: null,
+  },
+};
 
 // something else
 export const VUE_DEBUG_TOOLS = true;

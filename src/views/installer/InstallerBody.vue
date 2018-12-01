@@ -2,8 +2,9 @@
   <div id="h-install-guide__body__form">
 
     <!-- Register Form -->
-    <Form :model="registerForm" :disabled="submitStatus" label-width="100px" :rules="rules"
-          ref="form">
+    <Form label-width="100px" ref="form" :model="registerForm" :rules="rules"
+          :disabled="submitStatus || !allowRegister"
+    >
 
       <!-- Blog Information -->
       <Divider title="Blog Information" class="h-install-guide-section">
@@ -91,6 +92,9 @@ export default {
       return !!(this.registerForm.email && this.registerForm.username
         && this.registerForm.password);
     },
+    allowRegister() {
+      return !this.$store.state.author.nickname;
+    },
   },
   data() {
     return {
@@ -138,11 +142,17 @@ export default {
                 this.$router.replace({ name: 'index-home' });
               }, 1500);
             }, (error) => {
-              this.submitStatus = false;
+              const { code } = this.$Global.$LastError;
+              if (code === 0x1000 || code === 0x1001) {
+                this.submitStatus = false;
+              }
               this.$Message.error(error);
             });
         }
       });
+    },
+    goHome() {
+      this.$router.replace({ name: 'index-home' });
     },
   },
   watch: {
@@ -158,24 +168,36 @@ export default {
       }
     },
   },
+  mounted() {
+    setTimeout(() => {
+      if (!this.allowRegister) {
+        this.$Message.error({
+          content: 'Prohibition of registration',
+          onClose: this.goHome,
+        });
+      }
+    }, 1000);
+  },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 #h-install-guide__body__form {
   padding: 1rem 2.5rem;
-}
 
-form {
-  padding: 0 1rem;
-}
+  @at-root
+  form {
+    padding: 0 1rem;
+  }
 
-.h-install-guide-section {
-  margin-bottom: 5rem;
+  @at-root
+  .h-install-guide-section {
+    margin-bottom: 5rem;
 
-  &:last-child {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
