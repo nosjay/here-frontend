@@ -1,14 +1,20 @@
 <template>
   <Layout>
-    <!-- left aside on page -->
-    <Aside width="25%" full-page shadow><HomeAside></HomeAside></Aside>
-
-    <!-- right container -->
-    <Layout>
-      <Header><HomeHeader></HomeHeader></Header>
-      <Main><router-view/></Main>
-      <Footer center><HomeFooter></HomeFooter></Footer>
-    </Layout>
+    <Header>
+      <Row>
+        <Col span="16" offset="4">
+          <HomeHeader></HomeHeader>
+        </Col>
+      </Row>
+    </Header>
+    <Main>
+      <Row>
+        <Col span="14" offset="5">
+          <router-view/>
+        </Col>
+      </Row>
+    </Main>
+    <Footer><HomeFooter></HomeFooter></Footer>
   </Layout>
 </template>
 

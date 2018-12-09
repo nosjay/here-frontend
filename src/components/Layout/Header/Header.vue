@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    fixed: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     blockClasses() {
@@ -25,6 +29,7 @@ export default {
         headerBlockClass,
         {
           [`${headerBlockClass}--shadow`]: this.shadow,
+          [`${headerBlockClass}--fixed`]: this.fixed,
         },
       ];
     },
