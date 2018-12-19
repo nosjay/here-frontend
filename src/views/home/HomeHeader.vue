@@ -1,13 +1,14 @@
 <template>
-  <header>
-    <figure class="h-blog-logo">
+  <div class="p-index__header" v-selection.disabled="">
+    <figure class="p-index__header__logo">
       <img src="../../assets/logo.png" alt="logo">
     </figure>
 
-    <div class="h-blog-description">
-      <span class="h-blog-title">Simple Blog Title</span>
+    <div class="p-index__header__body">
+      <p class="p-index__header__body__title">Simple Blog Title</p>
+      <p class="p-index__header__body__desc">simple blog description</p>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -17,19 +18,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../styles/mixins/common';
 
-.h-blog-logo {
-  margin: 0;
-  display: inline-block;
+
+// header styles
+.p-index__header {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @include disabled-pointer-events;
+}
+
+.p-index__header__logo {
+  margin: 0 10px;
 
   img {
-    width: 60px;
+    width: 32px;
+    height: 32px;
+    @include disabled-pointer-events;
   }
 }
 
-.h-blog-description {
-  display: inline-block;
-  line-height: 60px;
+.p-index__header__body {
+
+  @at-root
+  .p-index__header__body__title,
+  .p-index__header__body__desc {
+    margin: 0;
+  }
+
+  .p-index__header__body__desc {
+    font-size: 12px;
+    color: #aaa;
+  }
 }
 
 </style>

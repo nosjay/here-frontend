@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Header>
-      <Row>
+      <Row align="middle">
         <Col span="16" offset="4">
           <HomeHeader></HomeHeader>
         </Col>

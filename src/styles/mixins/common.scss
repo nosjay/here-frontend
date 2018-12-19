@@ -22,3 +22,8 @@
 @mixin box-shadows($shadow...) {
   box-shadow: $shadow;
 }
+
+@mixin disabled-pointer-events() {
+  cursor: default;
+  pointer-events: none;
+}

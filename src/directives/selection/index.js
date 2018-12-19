@@ -3,7 +3,11 @@ export default {
   bind(el, binding) {
     // check selection state
     if (binding.modifiers.disabled) {
-      el.onselectstart = () => false;
+      el.onselectstart = (e) => {
+        e.preventDefault();
+        return false;
+      };
+      el.classList.add('h-attr__no-select');
     }
 
     // create style element
