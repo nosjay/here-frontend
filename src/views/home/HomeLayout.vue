@@ -1,15 +1,15 @@
 <template>
   <Layout>
-    <Header>
+    <Header height="285px">
       <Row align="middle">
-        <Col span="16" offset="4">
+        <Col :sm="{span: 24}" :md="{ span: 16, offset: 4 }" :lg="{ span: 16, offset: 4 }">
           <HomeHeader></HomeHeader>
         </Col>
       </Row>
     </Header>
     <Main>
       <Row>
-        <Col span="14" offset="5">
+        <Col :sm="{span: 24}" :md="{ span: 16, offset: 4 }" :lg="{ span: 12, offset: 6 }">
           <router-view/>
         </Col>
       </Row>

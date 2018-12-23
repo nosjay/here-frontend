@@ -1,19 +1,34 @@
 <template>
   <div class="p-index__header" v-selection.disabled="">
     <figure class="p-index__header__logo">
-      <img src="../../assets/logo.png" alt="logo">
+      <img src="../../assets/logo.png" alt="avatar">
     </figure>
 
-    <div class="p-index__header__body">
-      <p class="p-index__header__body__title">Simple Blog Title</p>
-      <p class="p-index__header__body__desc">simple blog description</p>
-    </div>
+    <Row>
+      <Col :sm="{span: 20, offset: 2}" :md="{span: 16, offset: 4}" :lg="{span: 16, offset: 4}">
+        <div class="p-index__header__body">
+          <p class="p-index__header__body__title">职业挖坑人</p>
+          <p class="p-index__header__body__desc">
+            simple blog description
+            simple blog description
+            simple blog description
+            simple blog description
+            simple blog description
+          </p>
+        </div>
+      </Col>
+    </Row>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomeHeader',
+  computed: {
+    avatar() {
+      return '../../assets/logo.png';
+    },
+  },
 };
 </script>
 
@@ -23,10 +38,11 @@ export default {
 
 // header styles
 .p-index__header {
-  height: 60px;
+  height: 285px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   @include disabled-pointer-events;
 }
 
@@ -34,23 +50,57 @@ export default {
   margin: 0 10px;
 
   img {
-    width: 32px;
-    height: 32px;
-    @include disabled-pointer-events;
+    width: 98px;
+    height: 98px;
+    min-width: 98px;
+    min-height: 98px;
+    border-radius: 50%;
+    @include box-shadow($spread-radius: 2px);
+
+    cursor: pointer;
+    pointer-events: all;
+
+    /*&:hover {*/
+      /*animation: swing 1s infinite;*/
+    /*}*/
   }
 }
 
 .p-index__header__body {
+  margin-top: 20px;
+}
 
-  @at-root
-  .p-index__header__body__title,
-  .p-index__header__body__desc {
-    margin: 0;
+.p-index__header__body__title,
+.p-index__header__body__desc {
+  margin: 0;
+  text-align: center;
+}
+
+.p-index__header__body__title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.p-index__header__body__desc {
+  font-size: 14px;
+  color: #aaa;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0);
   }
-
-  .p-index__header__body__desc {
-    font-size: 12px;
-    color: #aaa;
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0);
   }
 }
 
