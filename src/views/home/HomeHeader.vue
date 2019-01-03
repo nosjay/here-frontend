@@ -7,13 +7,14 @@
     <Row>
       <Col :sm="{span: 20, offset: 2}" :md="{span: 16, offset: 4}" :lg="{span: 16, offset: 4}">
         <div class="p-index__header__body">
-          <p class="p-index__header__body__title">职业挖坑人</p>
+          <p class="p-index__header__body__title">Jayson Wang</p>
           <p class="p-index__header__body__desc">
-            simple blog description
-            simple blog description
-            simple blog description
-            simple blog description
-            simple blog description
+            Developer
+            Developer
+            Developer
+            Developer
+            Developer
+            Developer
           </p>
         </div>
       </Col>

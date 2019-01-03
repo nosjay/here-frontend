@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Header height="285px">
+    <Header height="285px" class="h-index__header">
       <Row align="middle">
         <Col :sm="{span: 24}" :md="{ span: 16, offset: 4 }" :lg="{ span: 16, offset: 4 }">
           <HomeHeader></HomeHeader>
@@ -30,6 +30,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../../styles/mixins/common';
+
+.h-index__header {
+  @include box-shadow()
+}
 
 </style>
