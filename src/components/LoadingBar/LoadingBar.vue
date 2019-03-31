@@ -7,19 +7,26 @@
 </template>
 
 <script>
-const loadingBarBlockClass = 'h-loading-bar';
+import {
+  LOADING_BAR_PRIMARY_COLOR,
+  LOADING_BAR_ERROR_COLOR,
+  LOADING_BAR_SUCCESS_STATUS,
+  LOADING_BAR_FAILURE_STATUS,
+} from './LoadingBarTypes';
 
+
+const loadingBarBlockClass = 'h-loading-bar';
 
 export default {
   name: 'LoadingBar',
   props: {
-    color: {
+    primaryColor: {
       type: String,
-      default: 'primary',
+      default: LOADING_BAR_PRIMARY_COLOR,
     },
-    failedColor: {
+    failureColor: {
       type: String,
-      default: 'error',
+      default: LOADING_BAR_ERROR_COLOR,
     },
     height: {
       type: Number,
@@ -29,7 +36,7 @@ export default {
   data() {
     return {
       percent: 0,
-      status: 'success',
+      status: LOADING_BAR_SUCCESS_STATUS,
       show: false,
     };
   },
@@ -46,8 +53,8 @@ export default {
       return [
         `${loadingBarBlockClass}__inner`,
         {
-          [`${loadingBarBlockClass}__inner--primary`]: this.color === 'primary' && this.status === 'success',
-          [`${loadingBarBlockClass}__inner--failed`]: this.failedColor === 'error' && this.status === 'error',
+          [`${loadingBarBlockClass}__inner--primary`]: this.isPrimaryColor && this.isSuccess,
+          [`${loadingBarBlockClass}__inner--failure`]: this.isErrorColor && this.isFailure,
         },
       ];
     },
@@ -57,17 +64,27 @@ export default {
         height: `${this.height}px`,
       };
 
-      // success color custom
-      if (this.color !== 'primary' && this.status === 'success') {
-        style.backgroundColor = this.color;
+      // color custom
+      if (!this.isPrimaryColor && this.isSuccess) {
+        style.backgroundColor = this.primaryColor;
       }
-
-      // failed color custom
-      if (this.failedColor !== 'error' && this.status === 'error') {
-        style.backgroundColor = this.failedColor;
+      if (!this.isErrorColor && this.isFailure) {
+        style.backgroundColor = this.failureColor;
       }
 
       return style;
+    },
+    isPrimaryColor() {
+      return this.primaryColor === LOADING_BAR_PRIMARY_COLOR;
+    },
+    isErrorColor() {
+      return this.failureColor === LOADING_BAR_ERROR_COLOR;
+    },
+    isSuccess() {
+      return this.status === LOADING_BAR_SUCCESS_STATUS;
+    },
+    isFailure() {
+      return this.status === LOADING_BAR_FAILURE_STATUS;
     },
   },
 };

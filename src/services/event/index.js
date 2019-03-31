@@ -6,7 +6,7 @@ import { GLOBAL_VARIABLES } from '../../configs';
 // global event bus
 GLOBAL_VARIABLES.$Bus = new Vue();
 
-// events callbacks
+// noinspection JSUnusedGlobalSymbols
 const callbacks = {
   /**
    * start loadingBar

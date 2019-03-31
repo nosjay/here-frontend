@@ -1,10 +1,16 @@
 import LoadingBar from './LoadingBar';
+import {
+  LOADING_BAR_PRIMARY_COLOR,
+  LOADING_BAR_ERROR_COLOR,
+  LOADING_BAR_SUCCESS_STATUS,
+  LOADING_BAR_FAILURE_STATUS,
+} from './LoadingBarTypes';
 
 
 let loadingBarInstance = null;
 let loadingBarTimer = null;
-let loadingBarSuccessColor = 'primary';
-let loadingBarFailedColor = 'error';
+let loadingBarPrimaryColor = LOADING_BAR_PRIMARY_COLOR;
+let loadingBarFailureColor = LOADING_BAR_ERROR_COLOR;
 let loadingBarHeight = 2;
 
 
@@ -17,8 +23,8 @@ function getLoadingBarInstance() {
     loadingBarInstance = LoadingBar.newInstance({
       percent: 0,
       height: loadingBarHeight,
-      color: loadingBarSuccessColor,
-      failedColor: loadingBarFailedColor,
+      primaryColor: loadingBarPrimaryColor,
+      failureColor: loadingBarFailureColor,
     });
   }
 
@@ -71,7 +77,7 @@ export default {
       let percent = 0;
       updateLoadingBar({
         percent,
-        status: 'success',
+        status: LOADING_BAR_SUCCESS_STATUS,
         show: true,
       });
 
@@ -97,10 +103,10 @@ export default {
    */
   config(options) {
     if ('color' in options) {
-      loadingBarSuccessColor = options.color;
+      loadingBarPrimaryColor = options.primaryColor;
     }
-    if ('failedColor' in options) {
-      loadingBarFailedColor = options.failedColor;
+    if ('failureColor' in options) {
+      loadingBarFailureColor = options.failureColor;
     }
     if ('height' in options) {
       loadingBarHeight = parseInt(options.height, 10);
@@ -124,7 +130,7 @@ export default {
     cleanLoadingBarTimer();
     updateLoadingBar({
       percent: 100,
-      status: 'success',
+      status: LOADING_BAR_SUCCESS_STATUS,
       show: true,
     });
     hiddenLoadingBar();
@@ -133,7 +139,7 @@ export default {
     cleanLoadingBarTimer();
     updateLoadingBar({
       percent: 100,
-      status: 'error',
+      status: LOADING_BAR_FAILURE_STATUS,
       show: true,
     });
     hiddenLoadingBar();

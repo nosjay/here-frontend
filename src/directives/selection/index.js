@@ -12,7 +12,7 @@ export default {
 
     // create style element
     const style = document.createElement('style');
-    // add background and foreground color
+    // add background and foreground primaryColor
     if (binding.value && binding.value.background) {
       style.innerHTML += `::selection { background: ${binding.value.background}; }`;
       style.innerHTML += `::-moz-selection { background: ${binding.value.background}; }`;

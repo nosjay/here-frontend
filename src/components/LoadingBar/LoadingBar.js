@@ -2,6 +2,10 @@ import Vue from 'vue';
 import LoadingBar from './LoadingBar.vue';
 
 
+/**
+ * @param {Object} properties
+ * @return {{setData: Function, destroy: Function}}
+ */
 LoadingBar.newInstance = (properties) => {
   const props = properties || {};
 

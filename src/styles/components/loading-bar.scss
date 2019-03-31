@@ -1,4 +1,4 @@
-@import "../vars";
+@import "../theme/vars";
 
 
 .h-loading-bar {
@@ -17,7 +17,7 @@
       background: $primary-color;
     }
 
-    &--failed {
+    &--failure {
       background: $error-color;
     }
   }

@@ -1,5 +1,4 @@
 import { GLOBAL_VARIABLES } from '../configs';
-
 import Aside from './Aside';
 import Button from './Button';
 import Col from './Col';
@@ -43,15 +42,18 @@ const components = {
 
 export default {
   // eslint-disable-next-line no-unused-vars
-  install(Vue, options = {}) {
+  install(Vue) {
     // register all components
     Object.keys(components).forEach((name) => {
       Vue.component(name, components[name]);
     });
 
     GLOBAL_VARIABLES.$Loading = LoadingBar;
+    // noinspection JSUnusedGlobalSymbols
     Vue.prototype.$Loading = LoadingBar;
+
     GLOBAL_VARIABLES.$Message = Message;
+    // noinspection JSUnusedGlobalSymbols
     Vue.prototype.$Message = Message;
   },
 };

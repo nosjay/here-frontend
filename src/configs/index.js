@@ -26,10 +26,12 @@ export const GLOBAL_VARIABLES = {
     message: null,
   },
 };
+// export GLOBAL_VARIABLES to window when dev mode
+window.HERE_GLOBAL = IS_PRODUCTION_ENV ? null : GLOBAL_VARIABLES;
 
 // something else
-export const VUE_DEBUG_TOOLS = true;
-export const VUE_PRODUCTION_TIPS = true;
+export const VUE_DEBUG_TOOLS = !IS_PRODUCTION_ENV;
+export const VUE_PRODUCTION_TIPS = !IS_PRODUCTION_ENV;
 
 export const AXIOS_DEFAULT_TOKEN = '00-ff-7cc1981f5-ff00';
 export const AXIOS_REQUEST_MASK_1 = 0x13092cb0;
