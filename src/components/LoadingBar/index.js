@@ -7,6 +7,10 @@ let loadingBarSuccessColor = 'primary';
 let loadingBarFailedColor = 'error';
 let loadingBarHeight = 2;
 
+
+/**
+ * @return {LoadingBar}
+ */
 function getLoadingBarInstance() {
   if (loadingBarInstance === null) {
     // Passing parameters through props
@@ -21,10 +25,16 @@ function getLoadingBarInstance() {
   return loadingBarInstance;
 }
 
+/**
+ * @param {Object} options
+ */
 function updateLoadingBar(options) {
   getLoadingBarInstance().setData(options);
 }
 
+/**
+ * hide loading bar
+ */
 function hiddenLoadingBar() {
   setTimeout(() => {
     // hidden `LoadingBar`
@@ -37,16 +47,20 @@ function hiddenLoadingBar() {
       updateLoadingBar({
         percent: 0,
       });
-    }, 200); // because `css::transition-time` is 0.2s
-  }, 800);
+    }, 250); // because `css::transition-time` is 0.2s
+  }, 650);
 }
 
+/**
+ * destroy timer
+ */
 function cleanLoadingBarTimer() {
   if (loadingBarTimer !== null && loadingBarTimer !== true) {
     clearInterval(loadingBarTimer);
   }
   loadingBarTimer = null;
 }
+
 
 export default {
   /**
@@ -64,7 +78,7 @@ export default {
       // each 200ms to add random percent mendaciously when needed
       if (autoIncrementPercent) {
         loadingBarTimer = setInterval(() => {
-          percent += Math.floor(Math.random() * 2 + 1); // eslint-disable-line no-mixed-operators
+          percent += Math.floor((Math.random() * 2) + 1);
           if (percent > 95) {
             cleanLoadingBarTimer();
           }
@@ -89,7 +103,7 @@ export default {
       loadingBarFailedColor = options.failedColor;
     }
     if ('height' in options) {
-      loadingBarHeight = options.height;
+      loadingBarHeight = parseInt(options.height, 10);
     }
   },
   /**

@@ -38,7 +38,7 @@ LoadingBar.newInstance = (properties) => {
     },
     destroy() {
       // remove HTMLNode from body
-      document.body.removeChild(document.getElementsByClassName('h-LoadingBar')[0]);
+      document.body.removeChild(document.getElementsByClassName('h-loading-bar')[0]);
       // destroy Vue instance
       instance = null;
     },

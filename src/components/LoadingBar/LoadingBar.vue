@@ -9,6 +9,7 @@
 <script>
 const loadingBarBlockClass = 'h-loading-bar';
 
+
 export default {
   name: 'LoadingBar',
   props: {

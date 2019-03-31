@@ -1,8 +1,8 @@
-@import '../definitions';
+@import '../vars';
 
 
 .h-message {
-  font-size: $base-font-size;
+  font-size: $default-font-size;
   position: fixed;
   left: 0;
   top: 45px;

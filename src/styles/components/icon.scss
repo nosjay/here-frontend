@@ -1,4 +1,4 @@
-@import '../definitions';
+@import '../vars';
 
 
 @font-face {
@@ -13,7 +13,7 @@
 .h-icon {
   speak: none;
   font-family: iconfont, serif;
-  font-size: $base-font-size;
+  font-size: $default-font-size;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
