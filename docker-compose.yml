@@ -5,7 +5,7 @@ version: "3"
 
 services:
   vue:
-    build: "docs/docker/yarn/serve"
+    build: "docs/docker/yarn-serve"
     volumes:
       - .:/var/yarn
     ports:
