@@ -11,6 +11,8 @@ RUN set -x \
         make \
         python \
     \
+    && yarn global add node-gyp \
+    \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
 
