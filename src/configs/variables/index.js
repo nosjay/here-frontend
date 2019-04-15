@@ -1,8 +1,10 @@
 import { APPLICATION_EXPORTS_DEBUG } from '../index';
+import EventBus from './event-bus';
 import LastError from './last-error';
 
 
 const GLOBAL_VARIABLES = {
+  ...EventBus,
   ...LastError,
 };
 // eslint-disable-next-line no-underscore-dangle
