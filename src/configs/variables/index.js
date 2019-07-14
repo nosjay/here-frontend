@@ -10,5 +10,4 @@ const GLOBAL_VARIABLES = {
 // eslint-disable-next-line no-underscore-dangle
 window.__APPLICATION_GLOBAL__ = APPLICATION_EXPORTS_DEBUG ? GLOBAL_VARIABLES : undefined;
 
-
 export default GLOBAL_VARIABLES;
